@@ -1,0 +1,29 @@
+{
+  "name": "shop-co-team-3",
+  "version": "1.0.0",
+  "description": "Your team task is to implement Frontend and Backend for E-Commerce Website",
+  "main": "main.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write ."
+  },
+  "author": "TEAM-3",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^6.0.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  }
+}
