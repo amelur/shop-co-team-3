@@ -38,11 +38,14 @@ function Hero(): string {
   return template;
 }
 
-export function renderHero(): HTMLElement {
+export function renderHero(): any {
   const hero = document.createElement('section') as HTMLElement;
   hero.classList.add('hero');
   hero.innerHTML = Hero();
-  return hero;
+  const body = document.body;
+  body.append(hero);
 }
+
+
 
 
