@@ -1,0 +1,7 @@
+.homePage_brandSection {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 122px;
+}
