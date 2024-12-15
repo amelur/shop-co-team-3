@@ -1,4 +1,4 @@
-// import styles from "../styles/brandsSection.css"
+import "../styles/brandsSection.css"
 // import  brandsData  from "../../src/assets/data/brandsData.json"
 
 const brandsData = "../../src/assets/data/brandsData.json";
