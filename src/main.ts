@@ -1,18 +1,9 @@
-// // import { innerHTML } from './innerHTML';
-// // import locales from './locales.json' 
-
+import { createHeader } from './components/header';
+import { renderHero } from './components/hero/hero';
 import { addBrandsSection } from "./components/brandsSection";
 
-// function initApp() {
-//     return new Promise((resolve) => {
-//         setTimeout(() => {
-           
-//         }, 1000); 
-//       });
-// }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     // initApp();
-    addBrandsSection();
-// });
-// 
+createHeader();
+renderHero();
+addBrandsSection();
+
