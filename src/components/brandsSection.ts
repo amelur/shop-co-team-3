@@ -1,34 +1,28 @@
-import "../styles/brandsSection.css"
-// import  brandsData  from "../../src/assets/data/brandsData.json"
+import '../styles/brandsSection.css';
+import { Brand } from '../../src/assets/data/brandsData';
+import { brandsData } from '../../src/assets/data/brandsData';
 
-const brandsData = "../../src/assets/data/brandsData.json";
+export function addBrandsSection(data: Brand[]) {
+  const brandSection = document.createElement('section');
+  brandSection.className = 'homePage_brandSection';
 
-export function addBrandsSection() {
-    const brandSection = document.createElement("section");
-    brandSection.className = "homePage_brandSection";
+  data.forEach((item: Brand) => {
+    console.log(item);
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.alt;
+    img.title = item.brandName;
 
-    // Загрузить JSON-файл
-    fetch(brandsData)
-    .then(response => response.json()) // Парсим JSON
-    .then(data => {
-    // Перебираем массив данных
-    data.forEach((item: Object = {id: Number, src: String, alt: String, brandName: String, link: String}) => {
-        console.log(item);
-        const img = document.createElement('img');
-        img.src = item.src;
-        img.alt = item.alt;
-        img.title = item.brandName;
+    const link = document.createElement('a');
+    link.href = item.link;
+    link.target = '_blank';
+    link.appendChild(img);
+    brandSection.appendChild(link);
+  });
 
-        const link = document.createElement('a');
-        link.href = item.link;
-        link.target = '_blank'; 
-        link.appendChild(img);
-        brandSection.appendChild(link);
-    });
-    })
-    .catch(error => {
-    console.error('Error loading JSON:', error);
-    });
+  return brandSection;
+}
 
-    document.body.append(brandSection);  
+export function createBrandSection() {
+  document.body.append(addBrandsSection(brandsData));
 }

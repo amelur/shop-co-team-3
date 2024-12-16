@@ -54,6 +54,8 @@ body {
 }
 
 .hero__button {
+  width: 210px;
+  height: 52px;
   margin-top: 26px;
 }
 

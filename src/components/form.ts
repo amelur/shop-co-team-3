@@ -1,8 +1,7 @@
 import '../styles/form.css';
 
-export function renderForm(){
-  
-  const newsletterForm =`
+export function renderForm() {
+  const newsletterForm = `
 <section class="newsletter">
   <div class="newsletter-title">
     <h2>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
@@ -20,6 +19,5 @@ export function renderForm(){
   </form>
 </section>
 `;
-document.body.innerHTML=(newsletterForm); 
-
+  document.body.innerHTML += newsletterForm;
 }
