@@ -1,3 +1,8 @@
-import { createHeader } from './components/header';
+// import { createHeader } from './components/header';
+import { renderFilters } from './components/FilterForm';
 
-createHeader();
+
+// createHeader();
+renderFilters()
+
+
