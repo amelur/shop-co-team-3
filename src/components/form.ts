@@ -19,5 +19,5 @@ export function renderForm() {
   </form>
 </section>
 `;
-  document.body.innerHTML += newsletterForm;
+  return newsletterForm;
 }
