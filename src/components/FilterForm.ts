@@ -54,8 +54,7 @@ const filtersForm =
 export function renderFilters() {
   const sidebar = document.createElement('div');
   sidebar.innerHTML = filtersForm
-  document.body.appendChild(sidebar);
-
+  document.body.append(sidebar);
   initFilterFunctionality()
 
 }
