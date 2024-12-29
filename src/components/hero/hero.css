@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.hero {
+  position: relative;
+  background-color: #f2f0f1;
+  padding: 0 60px 0 100px;
+  display: flex;
+  justify-content: space-between;
+
+  /* background:
+      url('assets/images/hero1.jpg') 714px -46.048px / 46.659% 152.049% no-repeat,
+      #f2f0f1; */
+}
+
+.hero__wrapper {
+  width: 100%;
+}
+
+.hero__title {
+  width: 577px;
+  color: #000;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: Poppins;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px; /* 100% */
+  padding-top: 103px;
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
+.hero__subtitle {
+  width: 545px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Rubik;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+  padding-top: 17px;
+}
+
+.hero__button {
+  width: 210px;
+  height: 52px;
+  margin-top: 26px;
+}
+
+.hero__list {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  padding: 48px 0 123px;
+}
+
+.hero__quantity {
+  color: #000;
+  font-family: Rubik;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.line {
+  width: 1px;
+  height: 67px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.hero__text {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Rubik;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+}
+
+.rhombus {
+  background: url('./src/assets/icons/EllipRhomb.svg') no-repeat center center /
+    cover;
+  position: absolute;
+}
+
+.rhombus_1 {
+  top: 20.5%;
+  right: 87%;
+  width: 56px;
+  height: 34.087px;
+  flex-shrink: 0;
+}
+
+.rhombus_2 {
+  top: 1.5%;
+  right: 3.5%;
+  position: absolute;
+  width: 104px;
+  height: 63.304px;
+  flex-shrink: 0;
+}
+
+.hero__img {
+  position: relative;
+  width: 106%;
+  background-image: url('./src/assets/images/hero1.jpg');
+  background-size: cover;
+  background-position: center 10%;
+  background-repeat: no-repeat;
+}
