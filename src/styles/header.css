@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 100px;
+    background-color: white;
+    font-family: 'Poppins';
+  }
+  
+  .logo span {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 20px;
+  }
+  
