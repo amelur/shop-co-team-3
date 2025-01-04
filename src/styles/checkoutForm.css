@@ -1,0 +1,106 @@
+.createCheckoutFormSection {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.formSection{
+    display: flex;
+    flex-direction: row;
+}
+
+.fieldsSection{
+    border-radius: 20px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-width: 1px;
+    padding: 10px 24px;
+    width: 65%;
+}
+
+.orderSummarySection{
+    margin: 0 0 0 20px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-width: 1px;
+    padding: 10px 50px;
+    width: 35%;
+    height: fit-content;
+}
+
+h1{
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 40px;
+    color: rgba(0, 0, 0, 1);
+}
+
+h2{    
+    font-family: 'Rubik';
+    font-weight: 700;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+}
+
+
+.separator{
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 10px 0; 
+}
+
+.grayStyle{
+    font-family: 'Rubik';
+    font-weight: 400;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 10px 0;
+}
+
+
+.blackBoldText{
+    font-family: 'Rubik';
+    font-weight: 700;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);
+    margin: 10px 0;
+}
+
+.redText{
+    font-family: 'Rubik';
+    font-weight: 700;
+    font-size: 20px;
+    color: rgba(255, 51, 51, 1);
+    margin: 10px 0;
+}
+
+.blackStyle{
+    font-family: 'Rubik';
+    font-weight: 400;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);
+    margin: 10px 0;
+}
+
+.blackBigBoldText{
+    font-family: 'Rubik';
+    font-weight: 700;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+    margin: 10px 0;
+}
+
+.buttonBlack{
+    width: 100%;
+    border-radius: 62px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    border-width: 0;
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer; 
+}
