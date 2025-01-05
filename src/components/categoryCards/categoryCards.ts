@@ -1,12 +1,21 @@
 import './categoryCards.css';
-import { renderFilters } from '../FilterForm';
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  images: string[];
+}
+
 const property: string = 'groceries';
+
 export function fetchAndRenderCategory(property: string) {
   fetch(`https://dummyjson.com/products/category/${property}`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data.products);
-
       document.body.append(renderCategorySection(data.products));
     })
     .catch((error) => {
@@ -14,67 +23,71 @@ export function fetchAndRenderCategory(property: string) {
     });
 }
 
-function createCards(data: any) {
+function calculateDiscountedPrice(price: number, discount: number): string {
+  return (
+    Math.round((price - (price * discount) / 100) * 100) / 100
+  ).toFixed(2);
+}
+
+function createStarWrapper(width?: number): HTMLDivElement {
+  const starWrapper = document.createElement('div');
+  starWrapper.className = 'category__card-starWrapper';
+  const star = document.createElement('img');
+  star.className = 'category__card-star';
+  star.src = './src/assets/icons/star.svg';
+  if (width) {
+    starWrapper.style.width = `${width}px`;
+  }
+  starWrapper.append(star);
+  return starWrapper;
+}
+
+function createRating(ratingNumber: number): HTMLDivElement {
+  const rating = document.createElement('div');
+  rating.className = 'category__card-rating';
+
+  const starsContainer = document.createElement('div');
+  starsContainer.className = 'category__card-starsContainer';
+
+  for (let i = 0; i < Math.floor(ratingNumber); i++) {
+    starsContainer.append(createStarWrapper());
+  }
+
+  if (ratingNumber % 1 !== 0) {
+    starsContainer.append(createStarWrapper((ratingNumber % 1) * 18.83));
+  }
+
+  const ratingWrapper = document.createElement('div');
+  ratingWrapper.className = 'category__card-ratingNumber';
+  ratingWrapper.innerHTML = `<p>${ratingNumber}/<span>5</span></p>`;
+
+  rating.append(starsContainer, ratingWrapper);
+  return rating;
+}
+
+function createCards(data: Product[]): HTMLDivElement {
   const categoryCards = document.createElement('div');
   categoryCards.className = 'category__cards';
 
-  data.forEach((product: any) => {
+  const fragment = document.createDocumentFragment();
+  data.forEach((product) => {
     const card = document.createElement('div');
     card.className = 'category__card';
 
     const img = document.createElement('img');
     img.className = 'category__img';
     img.src = product.images[0];
-
-    img.alt = product.name;
+    img.alt = product.title;
 
     const title = document.createElement('h3');
     title.className = 'category__card-title';
     title.textContent = product.title;
 
-    const rating = document.createElement('div');
-    rating.className = 'category__card-rating';
-
-    const starsContainer = document.createElement('div');
-    starsContainer.className = 'category__card-starsContainer';
-
-    const ratingNumber = product.rating;
-
-    for (let i = 0; i < ratingNumber - 1; i++) {
-      const starWrapper = document.createElement('div');
-      starWrapper.className = 'category__card-starWrapper';
-      const star = document.createElement('img');
-      star.className = 'category__card-star';
-      star.src = './src/assets/icons/star.svg';
-      starWrapper.append(star);
-      starsContainer.append(starWrapper);
-    }
-
-    if (ratingNumber % 1 !== 0) {
-      const starWrapper = document.createElement('div');
-      starWrapper.className = 'category__card-starWrapper';
-      const star = document.createElement('img');
-      star.className = 'category__card-star';
-      star.src = './src/assets/icons/star.svg';
-      starWrapper.style.width = `${(ratingNumber % 1) * 18.83}px`;
-      starWrapper.append(star);
-      starsContainer.append(starWrapper);
-    }
-    const ratingWrapper = document.createElement('div');
-    ratingWrapper.className = 'category__card-ratingNumber';
-    ratingWrapper.innerHTML = `<p>${ratingNumber}/<span>5</span></p>`;
-
-    rating.append(starsContainer, ratingWrapper);
+    const rating = createRating(product.rating);
 
     const priceDiv = document.createElement('div');
     priceDiv.className = 'category__card-price';
-    const price = (
-      Math.round(
-        (product.price - (product.price * product.discountPercentage) / 100) *
-          100,
-      ) / 100
-    ).toFixed(2);
-
+    const price = calculateDiscountedPrice(product.price, product.discountPercentage);
     priceDiv.innerHTML = `<p>$${price}</p>`;
 
     const discountPercentage = document.createElement('p');
@@ -89,13 +102,14 @@ function createCards(data: any) {
 
     card.append(img, title, rating, priceDiv);
 
-    categoryCards.append(card);
+    fragment.append(card);
   });
 
+  categoryCards.append(fragment);
   return categoryCards;
 }
 
-export function renderCategorySection(data: any) {
+export function renderCategorySection(data: Product[]): HTMLElement {
   const categorySection = document.createElement('section');
   categorySection.className = 'category';
 
@@ -104,12 +118,8 @@ export function renderCategorySection(data: any) {
   title.className = 'category__title';
 
   const line = document.createElement('div');
-  line.className = 'line';
+  line.className = 'category__line';
 
   categorySection.append(title, createCards(data), line);
   return categorySection;
-}
-
-function roundToHalf(num: number): number {
-  return Math.round(num * 2) / 2;
 }
