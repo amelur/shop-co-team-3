@@ -1,20 +1,27 @@
 
 import "../styles/categories.css";
 // Массив строк, содержащий названия категорий, которые будут отображены в виде карточек
-const categories = [
-  "Smartphones",
-  "Laptops",
-  "Fragrances",
-  "Skincare",
-  "Groceries",
-  "Home Decoration",
-  "Furniture",
-  "Tops",
-  "Womens Dresses",
-  "Womens Shoes",
-  "Mens Shirts",
-  "Mens Shoes",
-];
+// export const categories = [
+//   "Smartphones",
+//   "Laptops",
+//   "Fragrances",
+//   "Skincare",
+//   "Groceries",
+//   "Home Decoration",
+//   "Furniture",
+//   "Tops",
+//   "Womens Dresses",
+//   "Womens Shoes",
+//   "Mens Shirts",
+//   "Mens Shoes",
+// ];
+
+
+export function getCategoriesList () {
+  fetch('https://dummyjson.com/products/category-list')
+    .then(res => res.json())
+    .then(data => createSection(data));
+}
 
 // Функция для создания одной карточки категории
 function createCard(stringData) {
@@ -33,7 +40,7 @@ function createCard(stringData) {
 }
 
 // Функция для создания и отображения секции с карточками категорий
-function createSection(data) {
+export function createSection(data) {
   // Создаём HTML-элемент <div>, который будет контейнером для карточек
   const container = document.createElement("div");
   
@@ -63,12 +70,14 @@ function createSection(data) {
   // Добавляем заголовок и контейнер с карточками внутрь секции
   section.append(title, container);
 
+
+
+  const brand = document.querySelector('.homePage_brandSection') as HTMLElement;
   // Добавляем готовую секцию в конец <body> текущего документа
-  document.body.append(section);
+  brand.insertAdjacentElement('afterend', section);
 }
 
 // Вызываем функцию createSection с массивом категорий (categories), чтобы отобразить их на странице
-createSection(categories);
 
 
 
