@@ -84,8 +84,8 @@ export function createCheckoutForm():HTMLElement {
     const inpLastName = createInput("Last name");
     const inpMaidenName = createInput("Maiden name");
     const separator1 = createSection('separator');
-    const inpEmail = createInput("Email");
-    const inpPhone = createInput("Phone");
+    const inpEmail = createInput("Email", '', "email");
+    const inpPhone = createInput("Phone", '', 'number');
     const separator2 = createSection('separator');
     const inpAddress = createInput("Address");
     const inpCity = createInput("City");
