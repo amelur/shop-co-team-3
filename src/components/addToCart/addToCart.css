@@ -1,0 +1,149 @@
+.product {
+    margin-left: auto;
+    max-width: 580px;
+    font-family: Poppins;
+  } 
+  
+  
+  h2 {
+    font-size: 40px;
+    margin-bottom: -10px;
+  }
+  
+  hr {
+    border: none;
+      height: 1px;
+      background-color: #0000001A;  
+      margin: 20px 0;
+  }
+  
+  p {
+    color: #00000099;
+    font-family: Rubik;
+  }
+  
+  /* рейтинг */
+  
+  
+  .stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+     margin-right: 10px;
+  }
+  
+  .rating-num {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px; 
+  }
+  
+  
+  /* цена */
+  
+  .price-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-weight: bold;
+    font-family: Rubik;
+  }
+  
+  .price {
+    font-size: 32px;
+  }
+  
+  .old-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 32px;
+  }
+  
+  .discount {
+    display: flex;
+    align-items: center;  
+    justify-content: center;      
+    margin-left: 10px;
+    height: 30px;
+    width: 60px; 
+    background-color: #FF33331A;
+    border-radius: 30px;
+    color: #FF3333;
+    font-weight: normal;
+    font-size: 16px;               
+  }
+  
+  .brand, .stock {
+    font-size: 24px;
+  }
+  
+  .style_brand, .style_stock {
+    font-size: 16px;
+  }
+  
+  .counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 62px;
+    width: 170px;
+    height: 52px;
+    gap: 15px;
+    margin: 16px 0;
+    background-color: #F0F0F0;
+  }
+  
+  .minus, .plus {
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .plus:hover {
+    transform: scale(1.2);
+  }
+  
+  .minus:hover {
+    transform: scale(1.2);
+  }
+  .counter-value {
+    min-width: 24px;
+    text-align: center;
+  }
+  
+  
+  .add-to-cart {
+    display: flex;
+    padding: 16px 139px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 62px;
+    background: #000;
+    border: none;
+    color: #fff;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 20px;
+  }
+  
+  .add-to-cart:hover {
+    background: #F2F0F1;
+    color: #000;
+  }
+  
+  .buttonsConteiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+  

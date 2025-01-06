@@ -1,0 +1,20 @@
+input {
+    background-color: rgba(240, 240, 240, 1);
+    border-radius: 20px;
+    border-style: none;
+    font-size: 16px;
+    color: black;
+    padding: 0 20px;
+    height: 43px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Rubik';
+    margin: 10px 0;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+    font-family: 'Rubik';
+    font-weight: 400;
+    font-size: 16px;
+}

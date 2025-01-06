@@ -15,6 +15,7 @@
   "author": "TEAM-3",
   "license": "ISC",
   "dependencies": {
+    "navigo": "^8.11.1",
     "vite": "^6.0.3"
   },
   "devDependencies": {

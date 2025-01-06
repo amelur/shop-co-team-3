@@ -1,14 +1,14 @@
-body {
-    width: 100%; /* Задаём адаптивную ширину */
+/* body {
+    width: 100%; 
     margin: 0 auto;
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .categories {
-    padding: 0 20px; /* Уменьшены боковые отступы для компактности */
+    padding: 0 100px; /* Уменьшены боковые отступы для компактности */
     text-align: center; /* Центрирование содержимого */
     
 
@@ -16,23 +16,26 @@ body {
 
 .categories__card:hover{
     transform: translateY(-5px);
+    background-color: #c0bfbf77;
 }
 
 .categories__title {
     margin: 0;
     padding: 20px 0; /* Отступы сверху и снизу для визуального разделения */
-    font-size: 24px; /* Уменьшен размер текста */
+    font-size: 48px; /* Уменьшен размер текста */
     font-weight: bold;
     line-height: 1.2;
-    
+    font-family: Poppins;
 }
 
 .categories__container {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Автоматическое изменение числа колонок */
     gap: 15px; /* Отступы между карточками */
     width: 100%; /* Контейнер занимает всю ширину */
-    max-width: 600px; /* Ограничение ширины для компактного отображения */
+    margin: 0 auto;
+    padding-bottom: 28px;
 }
 
 
@@ -50,4 +53,13 @@ body {
     word-wrap: break-word; /* Перенос слов */
     height: 100px; /* Фиксированная высота для выравнивания карточек */
     cursor: pointer;
+
+    width: 250px;
+    height: 298px;
+
+    font-family: Rubik;
+    font-size: 54px;
+    font-weight: 700;
+
+    word-break: break-word; /* Разрыв длинного слова */
 }
