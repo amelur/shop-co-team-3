@@ -8,6 +8,8 @@ import { renderFilters } from './components/FilterForm';
 import { renderProduct } from './components/addToCart/addToCart';
 
 
+import { createCheckoutForm } from './components/checkoutForm'
+
 createHeader();
 renderHero();
 createBrandSection();
@@ -19,4 +21,6 @@ renderProduct();
 
 
 
-
+// Создать и отобразить секцию Checkout
+// const checkOut=createCheckoutForm();
+// document.append(checkOut);
