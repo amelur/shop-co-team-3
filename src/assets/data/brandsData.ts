@@ -12,7 +12,7 @@ export const brandsData: Brand[] = [
     brandName: 'Versace',
     src: '../../src/assets/images/brandVersace.png',
     alt: 'Versace brand image',
-    link: './src/pages/cart.html',
+    link: './src/pages/CategoryPage/cart.html',
   },
   {
     id: 1,
