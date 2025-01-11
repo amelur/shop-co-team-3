@@ -1,5 +1,4 @@
-
-import "../styles/categories.css";
+import '../styles/categories.css';
 // Массив строк, содержащий названия категорий, которые будут отображены в виде карточек
 // export const categories = [
 //   "Smartphones",
@@ -16,22 +15,28 @@ import "../styles/categories.css";
 //   "Mens Shoes",
 // ];
 
-
-export function getCategoriesList () {
-  fetch('https://dummyjson.com/products/category-list')
-    .then(res => res.json())
-    .then(data => createSection(data));
+export async function getCategoriesList(): Promise<void> {
+  try {
+    const res = await fetch('https://dummyjson.com/products/category-list');
+    if (!res.ok) {
+      throw new Error('Ошибка загрузки данных категорий');
+    }
+    const data = await res.json();
+    createSection(data);
+  } catch (error) {
+    console.error('Ошибка при получении категорий:', error);
+  }
 }
 
 // Функция для создания одной карточки категории
 function createCard(stringData) {
   // Создаём HTML-элемент <div>, который будет представлять карточку
-  const card = document.createElement("div");
-  
+  const card = document.createElement('div');
+
   // Присваиваем созданной карточке CSS-класс "categories__card"
   // Этот класс должен быть описан в вашем CSS и управляет стилями карточки
-  card.className = "categories__card";
-  
+  card.className = 'categories__card';
+
   // Устанавливаем текстовое содержимое карточки равным переданному параметру stringData (название категории)
   card.textContent = stringData;
 
@@ -42,10 +47,10 @@ function createCard(stringData) {
 // Функция для создания и отображения секции с карточками категорий
 export function createSection(data) {
   // Создаём HTML-элемент <div>, который будет контейнером для карточек
-  const container = document.createElement("div");
-  
+  const container = document.createElement('div');
+
   // Присваиваем контейнеру CSS-класс "categories__container", чтобы управлять стилями контейнера
-  container.className = "categories__container";
+  container.className = 'categories__container';
 
   // Перебираем массив категорий (data) и для каждой категории:
   // - Создаём карточку с помощью функции createCard
@@ -53,24 +58,23 @@ export function createSection(data) {
   data.forEach((item) => container.append(createCard(item)));
 
   // Создаём HTML-элемент <section>, который будет содержать заголовок и контейнер карточек
-  const section = document.createElement("section");
-  
+  const section = document.createElement('section');
+
   // Присваиваем секции CSS-класс "categories", чтобы задать стили для этой секции
-  section.className = "categories";
+  section.className = 'categories';
+  section.id = 'categories';
 
   // Создаём HTML-элемент <h2>, который будет заголовком секции
-  const title = document.createElement("h2");
-  
+  const title = document.createElement('h2');
+
   // Присваиваем заголовку CSS-класс "categories__title" для стилизации
-  title.className = "categories__title";
-  
+  title.className = 'categories__title';
+
   // Устанавливаем текст заголовка равным "Categories"
-  title.textContent = "Categories";
+  title.textContent = 'Categories';
 
   // Добавляем заголовок и контейнер с карточками внутрь секции
   section.append(title, container);
-
-
 
   const brand = document.querySelector('.homePage_brandSection') as HTMLElement;
   // Добавляем готовую секцию в конец <body> текущего документа
@@ -78,8 +82,6 @@ export function createSection(data) {
 }
 
 // Вызываем функцию createSection с массивом категорий (categories), чтобы отобразить их на странице
-
-
 
 // // categories.ts
 // // import '../styles/catigories';
@@ -106,7 +108,7 @@ export function createSection(data) {
 //     card.textContent=stringData;
 //     return card;
 // }
-  
+
 // export function createSection(data:string[]):void{
 //   const title=`<h2 class="categories__title">Categories</h2>`;
 //   const container= document.createElement("div");
@@ -132,16 +134,16 @@ export function createSection(data) {
 // //       </div>
 // //     `;
 // //   }
-  
+
 // //   function renderCategories(categories: Category[]): void {
 // //     const container = document.getElementById('categories-container') as HTMLElement;
 // //     if (container) {
 // //       container.innerHTML = categories.map(createCategoryCard).join('');
-    
+
 // // }
 // // document.body.append(container)
 // //   }
-  
+
 // //   document.addEventListener('DOMContentLoaded', () => {
 // //     renderCategories(categories);
 

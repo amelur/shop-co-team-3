@@ -1,162 +1,180 @@
 /* Основной контейнер фильтров */
 .filters {
-    width: 250px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 15px;
-    border: 2px solid #e0e0e0;
-    font-family: 'Poppins'
-  }
-  
-  /* Заголовок фильтров */
-  .filters-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .filters-title {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  
-  /* Разделитель */
-  .filters-divider {
-    margin: 15px 0;
-    border: none;
-    border-top: 1px solid #e0e0e0;
-  }
-  
-  /* Секции фильтров */
-  .filters-section {
-    margin-bottom: 15px;
-  }
-  
-  .filters-subtitle {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .filters-sort-options label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  /* Ползунок цены */
-  .filters-price-range {
-    position: relative;
-    width: 100%;
-    height: 40px;
-  }
-
-  .range-track {
+  position: relative;
+  width: 250px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 2px solid #e0e0e0;
+  font-family: 'Poppins';
+  flex-shrink: 0;
+  @media (max-width: 768px) {
     position: absolute;
-    top: 50%;
+    visibility: hidden;
     left: 0;
+    bottom: -500px;
     width: 100%;
-    height: 4px;
-    background: #e0e0e0;
-    border-radius: 2px;
-    transform: translateY(-50%);
-    z-index: 1;
+    z-index: 10;
   }
+  transition:
+    bottom 0.4s ease-in-out,
+    visibility 0.4s ease-in-out;
+}
 
-  .range-track::after {
-    content: '';
-    position: absolute;
-    height: 100%;
-    background: #000;
-    border-radius: 2px;
-    z-index: 2;
-    left: var(--min-percent, 0%);
-    width: var(--range-width, 100%);
-  }
-  
-  .price-slider {
-    -webkit-appearance: none;
-    appearance: none;
-    position: absolute;
-    width: 100%;
-    height: 40px;
-    background: none;
-    pointer-events: none;
-    z-index: 3;
-  }
-  
-  .price-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    pointer-events: auto;
-    width: 16px;
-    height: 16px;
-    background: #000;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+.filters.active {
+  visibility: visible;
+  bottom: 0;
+  z-index: 1010;
+}
 
-  .price-slider:focus {
-    outline: none;
-  }
+/* Заголовок фильтров */
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .price-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  /* Кнопки */
-  .filters-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .filters-apply-btn {
-    padding: 10px 0;
-    border: none;
-    background-color: #000;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 30px;
-    cursor: pointer;
-  }
-  
-  .filters-reset-btn {
-    padding: 10px 0;
-    border: none;
-    background-color: #f4f4f4;
-    color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 30px;
-    cursor: pointer;
-  }
-  
-  .filters-apply-btn:hover {
-    background-color: #333;
-  }
-  
-  .filters-reset-btn:hover {
-    background-color: #ddd;
-  }
-  
-  input[type="radio"] {
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #ccc; 
-    border-radius: 50%; 
-    cursor: pointer;
-  }
+.filters-title {
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  input[type="radio"]:checked {
-    border-color: #888;
-    background-color: #888; 
-  }
+/* Разделитель */
+.filters-divider {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Секции фильтров */
+.filters-section {
+  margin-bottom: 15px;
+}
+
+.filters-subtitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filters-sort-options label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Ползунок цены */
+.filters-price-range {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+
+.range-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.range-track::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  background: #000;
+  border-radius: 2px;
+  z-index: 2;
+  left: var(--min-percent, 0%);
+  width: var(--range-width, 100%);
+}
+
+.price-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background: none;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  background: #000;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.price-slider:focus {
+  outline: none;
+}
+
+.price-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Кнопки */
+.filters-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filters-apply-btn {
+  padding: 10px 0;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.filters-reset-btn {
+  padding: 10px 0;
+  border: none;
+  background-color: #f4f4f4;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.filters-apply-btn:hover {
+  background-color: #333;
+}
+
+.filters-reset-btn:hover {
+  background-color: #ddd;
+}
+
+input[type='radio'] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type='radio']:checked {
+  border-color: #888;
+  background-color: #888;
+}

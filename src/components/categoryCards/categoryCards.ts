@@ -1,4 +1,5 @@
 import './categoryCards.css';
+import starImg from '../../assets/icons/star.svg';
 
 interface Product {
   id: number;
@@ -7,26 +8,29 @@ interface Product {
   discountPercentage: number;
   rating: number;
   images: string[];
+  category: string;
 }
 
-const property: string = 'groceries';
-
-export function fetchAndRenderCategory(property: string) {
-  fetch(`https://dummyjson.com/products/category/${property}`)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data.products);
-      document.body.append(renderCategorySection(data.products));
-    })
-    .catch((error) => {
-      console.error('Ошибка при получении данных:', error);
-    });
+export async function fetchAndRenderCategory(
+  property: string,
+): Promise<HTMLElement> {
+  try {
+    const res = await fetch(
+      `https://dummyjson.com/products/category/${property}`,
+    );
+    const data = await res.json();
+    console.log(data.products);
+    return renderCategorySection(data.products);
+  } catch (error) {
+    console.error('Ошибка при получении данных:', error);
+    throw error;
+  }
 }
 
 function calculateDiscountedPrice(price: number, discount: number): string {
-  return (
-    Math.round((price - (price * discount) / 100) * 100) / 100
-  ).toFixed(2);
+  return (Math.round((price - (price * discount) / 100) * 100) / 100).toFixed(
+    2,
+  );
 }
 
 function createStarWrapper(width?: number): HTMLDivElement {
@@ -34,7 +38,7 @@ function createStarWrapper(width?: number): HTMLDivElement {
   starWrapper.className = 'category__card-starWrapper';
   const star = document.createElement('img');
   star.className = 'category__card-star';
-  star.src = './src/assets/icons/star.svg';
+  star.src = starImg;
   if (width) {
     starWrapper.style.width = `${width}px`;
   }
@@ -76,6 +80,7 @@ function createCards(data: Product[]): HTMLDivElement {
 
     const img = document.createElement('img');
     img.className = 'category__img';
+    img.loading = 'lazy';
     img.src = product.images[0];
     img.alt = product.title;
 
@@ -87,7 +92,10 @@ function createCards(data: Product[]): HTMLDivElement {
 
     const priceDiv = document.createElement('div');
     priceDiv.className = 'category__card-price';
-    const price = calculateDiscountedPrice(product.price, product.discountPercentage);
+    const price = calculateDiscountedPrice(
+      product.price,
+      product.discountPercentage,
+    );
     priceDiv.innerHTML = `<p>$${price}</p>`;
 
     const discountPercentage = document.createElement('p');
@@ -114,12 +122,69 @@ export function renderCategorySection(data: Product[]): HTMLElement {
   categorySection.className = 'category';
 
   const title = document.createElement('h2');
-  title.textContent = property;
+  title.textContent = data[0].category;
   title.className = 'category__title';
+
+  const filterIcon = document.createElement('div');
+  filterIcon.className = 'category__filterIcon';
+  title.append(filterIcon);
+
+  filterIcon.addEventListener('click', handlerFilterIconClick);
 
   const line = document.createElement('div');
   line.className = 'category__line';
 
   categorySection.append(title, createCards(data), line);
   return categorySection;
+}
+
+function handlerFilterIconClick(event: Event): void {
+  const target = event.target as HTMLElement;
+  if (target.classList.contains('category__filterIcon')) {
+    addOverlayDiv();
+    showFilterForm();
+  }
+}
+
+function showFilterForm(): void {
+  const filterForm = document.querySelector('.filters');
+  filterForm?.classList.add('.active');
+  const filterApplyBtn = document.querySelector('.filters-apply-btn');
+  filterApplyBtn?.addEventListener('click', handlerFilterApplyBtnClick);
+}
+
+function addOverlayDiv(): void {
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  document.body.style.overflow = 'hidden';
+  overlay.addEventListener('click', handlerOverlayClick);
+  const filterForm = document.querySelector('.filters');
+  filterForm?.classList.add('active');
+  document.body.append(overlay);
+}
+
+function removeOverlayDiv(): void {
+  const overlay = document.querySelector('.overlay');
+  overlay?.remove();
+  document.body.style.overflow = 'auto';
+  const filterForm = document.querySelector('.filters');
+  filterForm?.classList.remove('active');
+}
+
+function handlerOverlayClick(event: Event): void {
+  const target = event.target as HTMLElement;
+
+  if (
+    target.classList.contains('overlay') ||
+    target.classList.contains('filters-apply-btn')
+  ) {
+    removeOverlayDiv();
+  }
+}
+
+function handlerFilterApplyBtnClick(): void {
+  const filterBtn = document.querySelector('.filters-apply-btn');
+  filterBtn?.addEventListener('click', () => {
+    removeOverlayDiv();
+  });
 }
