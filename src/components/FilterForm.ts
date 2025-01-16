@@ -1,10 +1,6 @@
-import '../styles/FilterForm.css'
-import { initFilterFunctionality } from './FilterRange';
+import '../styles/FilterForm.css';
 
-
-const filtersForm =
-
-`
+const filtersForm = `
 <div class="filters">
   <div class="filters-header">
     <h2 class="filters-title">Filters</h2>
@@ -52,9 +48,5 @@ const filtersForm =
 `;
 
 export function renderFilters() {
-  const sidebar = document.createElement('div');
-  sidebar.innerHTML = filtersForm
-  document.body.append(sidebar);
-  initFilterFunctionality()
-
+  return filtersForm;
 }
