@@ -3,6 +3,7 @@ import { createHeader } from '../../components/header';
 import { renderFilters } from '../../components/FilterForm';
 import { initFilterFunctionality } from '../../components/FilterRange';
 import { fetchAndRenderCategory } from '../../components/categoryCards/categoryCards';
+
 import { createFooter } from '../../components/footer';
 
 const urlParams = new URLSearchParams(window.location.search);

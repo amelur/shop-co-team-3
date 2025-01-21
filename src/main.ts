@@ -6,7 +6,7 @@ import { cardHandler } from './utils/DevHelper';
 import { renderForm } from './components/form';
 import { createFooter } from './components/footer';
 import { renderFilters } from './components/FilterForm';
-import { renderProduct } from './components/addToCart/addToCart';
+import { renderProductDetail } from './components/addToCart/addToCart';
 import { createCheckoutForm } from './components/checkoutForm';
 
 async function initializePage(): Promise<void> {
@@ -17,7 +17,7 @@ async function initializePage(): Promise<void> {
   renderForm();
   createFooter();
   renderFilters();
-  renderProduct();
+  renderProductDetail();
   cardHandler();
 }
 initializePage();

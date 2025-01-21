@@ -75,8 +75,9 @@ function createCards(data: Product[]): HTMLDivElement {
 
   const fragment = document.createDocumentFragment();
   data.forEach((product) => {
-    const card = document.createElement('div');
+    const card = document.createElement('div') as HTMLDivElement;
     card.className = 'category__card';
+    card.id = `${product.id}`;
 
     const img = document.createElement('img');
     img.className = 'category__img';
@@ -110,6 +111,11 @@ function createCards(data: Product[]): HTMLDivElement {
 
     card.append(img, title, rating, priceDiv);
 
+      // Добавил обработчик перехода к деталям продукта
+      card.addEventListener('click', () => {
+        window.location.href = `../ProductDetailPage/productDetail.html?id=${card.id}`;
+      });
+  
     fragment.append(card);
   });
 
