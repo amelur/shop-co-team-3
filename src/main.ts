@@ -20,9 +20,10 @@ async function initializePage(): Promise<void> {
   renderProductDetail();
   cardHandler();
 }
+
 initializePage();
 
 // Создать и отобразить секцию Checkout
-const checkOut = createCheckoutForm();
-document.body.append(checkOut);
+// const checkOut = createCheckoutForm();
+// document.body.append(checkOut);
 
