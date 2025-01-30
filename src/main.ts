@@ -25,3 +25,4 @@ initializePage();
 // Создать и отобразить секцию Checkout
 const checkOut = createCheckoutForm();
 document.body.append(checkOut);
+
