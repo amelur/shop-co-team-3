@@ -22,7 +22,7 @@ export async function getCategoriesList(): Promise<void> {
       throw new Error('Ошибка загрузки данных категорий');
     }
     const data = await res.json();
-    createSection(data);
+    return createSection(data);
   } catch (error) {
     console.error('Ошибка при получении категорий:', error);
   }
@@ -76,9 +76,9 @@ export function createSection(data) {
   // Добавляем заголовок и контейнер с карточками внутрь секции
   section.append(title, container);
 
-  const brand = document.querySelector('.homePage_brandSection') as HTMLElement;
-  // Добавляем готовую секцию в конец <body> текущего документа
-  brand.insertAdjacentElement('afterend', section);
+
+  return section.outerHTML;
+
 }
 
 // Вызываем функцию createSection с массивом категорий (categories), чтобы отобразить их на странице

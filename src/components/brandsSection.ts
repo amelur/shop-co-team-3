@@ -7,11 +7,11 @@ export function addBrandsSection(data: Brand[]) {
   brandSection.className = 'homePage_brandSection';
 
   data.forEach((item: Brand) => {
-    // console.log(item);
     const img = document.createElement('img');
     img.src = item.src;
     img.alt = item.alt;
     img.title = item.brandName;
+    img.classList.add('brandImg');
 
     const link = document.createElement('a');
     link.href = item.link;
@@ -24,5 +24,6 @@ export function addBrandsSection(data: Brand[]) {
 }
 
 export function createBrandSection() {
-  document.body.append(addBrandsSection(brandsData));
+  const brandSection = addBrandsSection(brandsData);
+  return brandSection.outerHTML;
 }
