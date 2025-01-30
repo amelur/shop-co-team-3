@@ -2,6 +2,7 @@ import { renderFilters } from '../../components/FilterForm';
 import { initFilterFunctionality } from '../../components/FilterRange';
 import { fetchAndRenderCategory } from '../../components/categoryCards/categoryCards';
 
+
 export async function renderCategoryPage(
   category: string,
 ): Promise<HTMLElement> {

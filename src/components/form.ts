@@ -1,10 +1,11 @@
 import '../styles/form.css';
+import '../styles/base.css';
 
 export function renderForm() {
   const newsletterForm = `
 <section class="newsletter">
   <div class="newsletter-title">
-    <h2>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
+    <h3>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h3>
   </div>
   <form class="newsletter-form">
     <div class="input-group">

@@ -21,8 +21,13 @@ export function createHeader() {
     </svg>
 `;
 
-  header.appendChild(logo);
-  header.appendChild(icons);
+// const hr = document.createElement('hr');
+// hr.className = 'hr__under-head';
+
+  header.append(logo);
+  header.append(icons);
+
+  // header.append(hr);  
 
   document.body.prepend(header);
 }
