@@ -1,10 +1,10 @@
 import './hero.css';
 import { renderButton } from '../buttons/button';
 
-function Hero(): string {
+export function sectionHero(): string {
   const heroButton = renderButton('Shop Now', 'hero__button', '#categories');
 
-  const template = ` 
+  const template = `<section class="hero"> 
     <div class="hero__wrapper" id="hero">
       <h1 class="hero__title">
         FIND <span class="underline">ANYTHING</span> THAT MATCHES YOUR STYLE
@@ -34,15 +34,8 @@ function Hero(): string {
       <div class="rhombus rhombus_1"></div>
       <div class="rhombus rhombus_2"></div>
     </div>
+  </section>
   `;
 
   return template;
-}
-
-export function renderHero(): any {
-  const hero = document.createElement('section') as HTMLElement;
-  hero.classList.add('hero');
-  hero.innerHTML = Hero();
-  const body = document.body;
-  body.append(hero);
 }

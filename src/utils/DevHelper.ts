@@ -1,8 +1,9 @@
+import router from '../router';
+
 export function cardHandler(): void {
   const cardsContainer = document.querySelector(
     '.categories__container',
   ) as HTMLElement;
-  console.log(cardsContainer);
 
   if (!cardsContainer) {
     console.error('Container not found');
@@ -10,10 +11,16 @@ export function cardHandler(): void {
   }
 
   cardsContainer.addEventListener('click', (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (target.classList.contains('categories__card')) {
-      const category = target.textContent?.trim() as string;
-      window.location.href = `./src/pages/CategoryPage/categoryPage.html?category=${category}`;
+    const target = (event.target as HTMLElement).closest(
+      '.categories__card',
+    ) as HTMLElement;
+    if (target) {
+      if (target.classList.contains('categories__card')) {
+        const category = target.textContent?.trim() as string;
+        router.navigate(`/category/${category}`);
+      } else {
+        console.error('Category not found in dataset');
+      }
     }
   });
 }

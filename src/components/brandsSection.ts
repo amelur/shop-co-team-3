@@ -24,5 +24,6 @@ export function addBrandsSection(data: Brand[]) {
 }
 
 export function createBrandSection() {
-  document.body.append(addBrandsSection(brandsData));
+  const brandSection = addBrandsSection(brandsData);
+  return brandSection.outerHTML;
 }

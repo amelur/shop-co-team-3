@@ -1,4 +1,5 @@
 import './categoryCards.css';
+import router from '../../router';
 import starImg from '../../assets/icons/star.svg';
 
 interface Product {
@@ -19,8 +20,8 @@ export async function fetchAndRenderCategory(
       `https://dummyjson.com/products/category/${property}`,
     );
     const data = await res.json();
-    console.log(data.products);
-    return renderCategorySection(data.products);
+    const categories = renderCategorySection(data.products);
+    return categories;
   } catch (error) {
     console.error('Ошибка при получении данных:', error);
     throw error;
@@ -111,11 +112,11 @@ function createCards(data: Product[]): HTMLDivElement {
 
     card.append(img, title, rating, priceDiv);
 
-      // Добавил обработчик перехода к деталям продукта
-      card.addEventListener('click', () => {
-        window.location.href = `../ProductDetailPage/productDetail.html?id=${card.id}`;
-      });
-  
+    // Добавил обработчик перехода к деталям продукта
+    card.addEventListener('click', () => {
+      router.navigate(`/category/${card.id}`);
+    });
+
     fragment.append(card);
   });
 

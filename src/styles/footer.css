@@ -1,109 +1,100 @@
-body {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  footer {
-    font-family: Rubik;
-    background-color: #F0F0F0;
-    width: 100%;
-  }
-  
-  .footer__info-block {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    width: 100%;
-    padding: 0 75px;
-    box-sizing: border-box;
-    padding-top: 53px;
-  }
-  
-  .footer__images-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: -10px;
-    margin-right: 28px;
-    margin-top: 18px;
-  }
-  
-  .footer__title-direction {
-    margin-left: 15px;
-  }
+footer {
+  font-family: Rubik;
+  background-color: #f0f0f0;
+  width: 100%;
+}
 
-  .footer__title-direction p {
-    margin-top: 15px;
-    color: #00000099;
-  }
-  
-  .footer__title-direction h2 {
-    font-size: 28px;
-    font-family: Poppins;
-  }
-  
-  .footer__title {
-    width: 270px;
-  }
-  
-  .footer__company,
-  .footer__help,
-  .footer__faq,
-  .footer__resources {
-    margin-top: 5px;
-    width: 180px;
-  }
-  
-  .footer__info-block h4 {
-    margin-bottom: 10px;
-    text-align: left;
-    color: #000;
-    margin-left: 14px;
-  }
-  
-  .footer__info-block a {
-    display: block;
-    margin: 15px;
-    text-decoration: none;
-    color: #00000099;
-  }
-  
-  .footer__info-block a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer__company {
-    margin-left: 80px;
-  }
-  
-  .footer__resources {
-    margin-right: 80px;
-  }
-  
-  .footer__faq {
-    margin-right: 40px;
-  }
-  
-  hr {
-    border: none;
-    height: 1px;
-    background-color: #0000001A;
-    margin: 40px 75px;
-  }
-  
-  .footer__copyright {
-    margin-left: 75px;
-    margin-top: 10px;
-    color: #00000099;
-  }
-  
-  .footer__credit-cards {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    margin-top: -25px;
-    margin-right: 70px;
+.footer__info-block {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  padding: 0 75px;
+  box-sizing: border-box;
+  padding-top: 53px;
+}
 
-  }
-  
+.footer__images-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -10px;
+  margin-right: 28px;
+  margin-top: 18px;
+}
+
+.footer__title-direction {
+  margin-left: 15px;
+}
+
+.footer__title-direction p {
+  margin-top: 15px;
+  color: #00000099;
+}
+
+.footer__title-direction h2 {
+  font-size: 28px;
+  font-family: Poppins;
+}
+
+.footer__title {
+  width: 270px;
+}
+
+.footer__company,
+.footer__help,
+.footer__faq,
+.footer__resources {
+  margin-top: 5px;
+  width: 180px;
+}
+
+.footer__info-block h4 {
+  margin-bottom: 10px;
+  text-align: left;
+  color: #000;
+  margin-left: 14px;
+}
+
+.footer__info-block a {
+  display: block;
+  margin: 15px;
+  text-decoration: none;
+  color: #00000099;
+}
+
+.footer__info-block a:hover {
+  text-decoration: underline;
+}
+
+.footer__company {
+  margin-left: 80px;
+}
+
+.footer__resources {
+  margin-right: 80px;
+}
+
+.footer__faq {
+  margin-right: 40px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #0000001a;
+  margin: 40px 75px;
+}
+
+.footer__copyright {
+  margin-left: 75px;
+  margin-top: 10px;
+  color: #00000099;
+}
+
+.footer__credit-cards {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-top: -25px;
+  margin-right: 70px;
+}
