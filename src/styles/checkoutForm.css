@@ -1,12 +1,13 @@
 .createCheckoutFormSection {
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    width: auto;
+    margin: 10px auto;
 }
 
 .formSection{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .fieldsSection{
@@ -15,34 +16,35 @@
     border-color: rgba(0, 0, 0, 0.1);
     border-width: 1px;
     padding: 10px 24px;
-    width: 65%;
+    width: auto;
+    margin: 10px;
 }
 
 .orderSummarySection{
-    margin: 0 0 0 20px;
+    margin: 10px;
     border-radius: 20px;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.1);
     border-width: 1px;
     padding: 10px 50px;
-    width: 35%;
+    width: auto;
     height: fit-content;
 }
 
 h1{
+
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 40px;
+    font-size: 32px;
     color: rgba(0, 0, 0, 1);
 }
 
 h2{    
     font-family: 'Rubik';
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     color: rgba(0, 0, 0, 1);
 }
-
 
 .separator{
     width: 100%;
@@ -54,7 +56,7 @@ h2{
 .grayStyle{
     font-family: 'Rubik';
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(0, 0, 0, 0.6);
     margin: 10px 0;
 }
@@ -63,7 +65,7 @@ h2{
 .blackBoldText{
     font-family: 'Rubik';
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(0, 0, 0, 1);
     margin: 10px 0;
 }
@@ -71,7 +73,7 @@ h2{
 .redText{
     font-family: 'Rubik';
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(255, 51, 51, 1);
     margin: 10px 0;
 }
@@ -79,7 +81,7 @@ h2{
 .blackStyle{
     font-family: 'Rubik';
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(0, 0, 0, 1);
     margin: 10px 0;
 }
@@ -87,7 +89,7 @@ h2{
 .blackBigBoldText{
     font-family: 'Rubik';
     font-weight: 700;
-    font-size: 24px;
+    font-size: 16px;
     color: rgba(0, 0, 0, 1);
     margin: 10px 0;
 }
@@ -104,3 +106,45 @@ h2{
     font-size: 16px;
     cursor: pointer; 
 }
+
+@media screen and (min-width: 600px) {
+    h1{
+        font-size: 40px;
+        color: rgba(0, 0, 0, 1);
+        font-family: 'Poppins';
+        font-weight: 700;
+    }
+    .formSection{
+        display: flex;
+        flex-direction: row;
+    }
+    .fieldsSection{
+        border-radius: 20px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.1);
+        border-width: 1px;
+        padding: 10px 24px;
+        width: 65%;
+    }
+    .orderSummarySection{
+        margin: 0 0 0 20px;
+        border-radius: 20px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.1);
+        border-width: 1px;
+        padding: 10px 50px;
+        width: 35%;
+        height: fit-content;
+    }
+    h2{    
+        font-family: 'Rubik';
+        font-weight: 700;
+        font-size: 24px;
+        color: rgba(0, 0, 0, 1);
+    }
+}
+
+
+
+
+

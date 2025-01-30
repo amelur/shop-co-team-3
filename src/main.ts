@@ -10,15 +10,15 @@ import { renderProductDetail } from './components/addToCart/addToCart';
 import { createCheckoutForm } from './components/checkoutForm';
 
 async function initializePage(): Promise<void> {
-  // createHeader();
-  // renderHero();
-  //createBrandSection();
+  createHeader();
+  renderHero();
+  createBrandSection();
   await getCategoriesList();
-  // renderForm();
-  // createFooter();
-  // renderFilters();
-  // renderProductDetail();
-  // cardHandler();
+  renderForm();
+  createFooter();
+  renderFilters();
+  renderProductDetail();
+  cardHandler();
 }
 
 initializePage();
@@ -26,3 +26,4 @@ initializePage();
 // Создать и отобразить секцию Checkout
 // const checkOut = createCheckoutForm();
 // document.body.append(checkOut);
+
