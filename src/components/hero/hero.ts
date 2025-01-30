@@ -2,27 +2,27 @@ import './hero.css';
 import { renderButton } from '../buttons/button';
 
 function Hero(): string {
-  const heroButton = renderButton('Shop Now', 'hero__button').outerHTML;
+  const heroButton = renderButton('Shop Now', 'hero__button', '#categories');
 
   const template = ` 
-    <div class="hero__wrapper">
+    <div class="hero__wrapper" id="hero">
       <h1 class="hero__title">
         FIND <span class="underline">ANYTHING</span> THAT MATCHES YOUR STYLE
       </h1>
       <p class="hero__subtitle">Browse through our diverse range of meticulously crafted garments, designed to bring out
         your individuality and cater to your sense of style.</p>
-      ${heroButton}
+      <a href="#categories">${heroButton.outerHTML}</a>
       <div class="hero__list">
         <div class="hero__item">
           <p class="hero__quantity">200+</p>
           <p class="hero__text">International Brands</p>
         </div>
-        <div class="line"></div>
+        <div class="hero__line"></div>
         <div class="hero__item">
           <p class="hero__quantity">2,000+</p>
           <p class="hero__text">High-Quality Products</p>
         </div>
-        <div class="line"></div>
+        <div class="hero__line hero__line_none"></div>
         <div class="hero__item">
           <p class="hero__quantity">30,000+</p>
           <p class="hero__text">Happy Customers</p>
@@ -30,6 +30,7 @@ function Hero(): string {
       </div>
     </div>
     <div class="hero__img">
+
       <div class="rhombus rhombus_1"></div>
       <div class="rhombus rhombus_2"></div>
     </div>
@@ -45,7 +46,3 @@ export function renderHero(): any {
   const body = document.body;
   body.append(hero);
 }
-
-
-
-

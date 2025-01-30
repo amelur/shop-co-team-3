@@ -16,9 +16,14 @@
   line-height: normal;
   cursor: pointer;
   transition: all 0.3s ease;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
-.button:hover {
-  background: #fff;
-  color: #000;
+@media (hover: hover) {
+  .button:hover {
+    background: #fff;
+    color: #000;
+  }
 }
