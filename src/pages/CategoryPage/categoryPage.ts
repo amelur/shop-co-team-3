@@ -20,7 +20,7 @@ async function initializePage(): Promise<void> {
   const categorySection = await fetchAndRenderCategory(category as string);
   app.append(categorySection);
 
-  //   createFooter();
+     createFooter();
 }
 
 initializePage();

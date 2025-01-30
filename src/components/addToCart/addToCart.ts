@@ -1,5 +1,9 @@
 import './addToCart.css';
 import starImg from '../../assets/icons/star.svg';
+import starHalfImg from '../../assets/icons/star-half.svg';
+import minusIcon from '../../assets/icons/minus.svg';
+import plusIcon from '../../assets/icons/plus.svg';
+
 
 const urlCardId = new URLSearchParams(window.location.search);
 const cardId = urlCardId.get('id');
@@ -10,12 +14,24 @@ export async function fetchProduct(productId: string | null) {
   return response.json();
 }
 
+
+
+
 export function renderProduct(product: any) {
   const container = document.getElementById("add") as HTMLElement;
 
   container.innerHTML = `
+  <section class="details">
+<!-- 4 контейнера для имитации картинок -->
+    <!-- <div class="imgs">  
+    <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
+   -->
+ 
     <div class="product-detail">
-
       <h2>${product.title}</h2>
 
       <div class="rating">
@@ -24,8 +40,9 @@ export function renderProduct(product: any) {
       </div>
 
       <div class="price-container">
-        <span class="price">$${product.price}</span>
-        <span class="old-price">$${(product.price / (1 - product.discountPercentage / 100)).toFixed(2)}</span>
+        <span class="price">$${(product.price - (product.price * (product.discountPercentage / 100))).toFixed(2)
+        }</span>
+        <span class="old-price">$${product.price}</span>
         <div class="discount">-${product.discountPercentage}%</div>
       </div>
 
@@ -49,13 +66,13 @@ export function renderProduct(product: any) {
       
       <div class="counter">
         <button class="minus" id="decrement">
-        <img src="./src/assets/icons/minus.svg">
+        <img src="${minusIcon}">
         </button>
 
         <span class="counter-value" id="quantity">1</span>
 
         <button class="plus" id="increment">
-        <img src="./src/assets/icons/plus.svg">
+        <img src="${plusIcon}">
         </button>
       </div>
 
@@ -63,6 +80,8 @@ export function renderProduct(product: any) {
     </div>
 
     </div>
+
+     </section>
   `;
 
 
@@ -73,7 +92,7 @@ export function renderProduct(product: any) {
       let starsHtml = "";
     
        const fullStarUrl = starImg; 
-       const halfStarUrl = './src/assets/icons/star-half.svg'; 
+       const halfStarUrl = starHalfImg; 
     
     // Добавляем полные звезды
     for (let i = 0; i < fullStars; i++) {
@@ -106,7 +125,7 @@ export function renderProduct(product: any) {
 }
 
 export async function renderProductDetail() {
-  const productId = cardId; // Заменить на нужный ID продукта
+  const productId = cardId; 
   const product = await fetchProduct(cardId);
   renderProduct(product);
 };

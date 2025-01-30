@@ -1,4 +1,5 @@
 import '../styles/footer.css';
+import '../styles/base.css';
 import { renderForm } from './form';
 
 export function createFooter() {
@@ -6,16 +7,20 @@ export function createFooter() {
   footer.innerHTML+=(renderForm());
   // Вставляем HTML-контент внутрь этого элемента
   footer.innerHTML += `
-    <div class="footer__info-block">
+  <footer>
+
+  <div class="footer__wrapper">
       <div class="footer__title">
-        <div class="footer__title-direction">
+        
+        
           <h2 class="footer__title-text">SHOP.CO</h2>
+
           <p class="footer__title-description">
             We have clothes that suits your style<br>
             and which you’re proud to wear. From<br>
             women to men.
           </p> 
-        </div>
+      
 
         <div class="footer__images-container">
           <a href="https://www.twitter.com" target="_blank" class="footer__social-link">
@@ -31,10 +36,15 @@ export function createFooter() {
             <img src="/src/assets/icons/GitHub.svg" alt="github" class="footer__social-icon">
           </a>
         </div>
+
       </div>
 
+
+
+    <div class="footer__info-block">
+
       <div class="footer__company">
-        <h4 class="footer__heading">Company</h4>
+        <h4 class="footer__heading">C O M P A N Y</h4>
         <a href="about" class="footer__link">About</a>
         <a href="features" class="footer__link">Features</a>
         <a href="works" class="footer__link">Works</a>
@@ -42,7 +52,7 @@ export function createFooter() {
       </div>
 
       <div class="footer__help">
-        <h4 class="footer__heading">Help</h4>
+        <h4 class="footer__heading">H E L P</h4>
         <a href="customerSupport" class="footer__link">Customer Support</a>
         <a href="deliveryDetails" class="footer__link">Delivery Details</a>
         <a href="terms&Conditions" class="footer__link">Terms & Conditions</a>
@@ -50,7 +60,7 @@ export function createFooter() {
       </div>
 
       <div class="footer__faq">
-        <h4 class="footer__heading">FAQ</h4>
+        <h4 class="footer__heading">F A Q</h4>
         <a href="account" class="footer__link">Account</a>
         <a href="manageDeliveries" class="footer__link">Manage Deliveries</a>
         <a href="orders" class="footer__link">Orders</a>
@@ -58,7 +68,7 @@ export function createFooter() {
       </div>
 
       <div class="footer__resources">
-        <h4 class="footer__heading">Resources</h4>
+        <h4 class="footer__heading">R E S O U R C E S</h4>
         <a href="freeeBooks" class="footer__link">Free eBooks</a>
         <a href="developmentTutorial" class="footer__link">Development Tutorial</a>
         <a href="howto-Blog" class="footer__link">How to - Blog</a>
@@ -66,8 +76,13 @@ export function createFooter() {
       </div>
 
     </div>
+   </div> 
 
+    
     <hr class="footer__hr">
+
+
+    <div class="under__hr">
 
     <p class="footer__copyright">Shop.co © 2000-2023, All Rights Reserved</p>
 
@@ -88,6 +103,9 @@ export function createFooter() {
         <img src="/src/assets/icons/GooglePay.svg" alt="GooglePay" class="footer__credit-icon">
       </a>
     </div>
+   </div>
+
+    </footer>
   `;
 
   
