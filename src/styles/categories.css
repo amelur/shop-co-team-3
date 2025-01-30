@@ -1,17 +1,69 @@
-/* body {
-    width: 100%; 
-    margin: 0 auto;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
 
+.categories {
+    padding: 0 10px; /* Уменьшены боковые отступы для компактности */
+    text-align: center; /* Центрирование содержимого */
+    width: auto;
+    justify-content: center;
+}
+
+.categories__card:hover{
+    transform: translateY(-5px);
+    background-color: #c0bfbf77;
+}
+
+.categories__title {
+    margin: 0;
+    padding: 20px 0; /* Отступы сверху и снизу для визуального разделения */
+    font-size: 36px; /* Уменьшен размер текста */
+    font-weight: bold;
+    line-height: 1.2;
+    font-family: Poppins;
+}
+
+.categories__container {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Автоматическое изменение числа колонок */
+    gap: 20px; /* Отступы между карточками */
+    width: 100%; /* Контейнер занимает всю ширину */
+    margin: 0 auto;
+    padding-bottom: 28px;
+    justify-content: center;
+}
+
+
+.categories__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px; /* Внутренние отступы для текста */
+    border-radius: 10px; /* Округление углов */
+    background: #eee; /* Светлый фон карточки */
+    font-size: 14px; /* Размер шрифта для компактного текста */
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 1.2; /* Высота строки для переноса текста */
+    word-wrap: break-word; /* Перенос слов */
+    height: 100px; /* Фиксированная высота для выравнивания карточек */
+    cursor: pointer;
+
+    width: 159px;
+    height: 169px;
+
+    font-family: Rubik;
+    font-size: 32px;
+    font-weight: 700;
+
+    word-break: break-word; /* Разрыв длинного слова */
+}
+
+/* --------------------------------------------------------------------- */
+@media screen and (min-width: 600px) {
+   
 .categories {
     padding: 0 100px; /* Уменьшены боковые отступы для компактности */
     text-align: center; /* Центрирование содержимого */
-    
-
 }
 
 .categories__card:hover{
@@ -49,6 +101,7 @@
     background: #eee; /* Светлый фон карточки */
     font-size: 14px; /* Размер шрифта для компактного текста */
     font-weight: bold;
+    text-transform: capitalize;
     line-height: 1.2; /* Высота строки для переноса текста */
     word-wrap: break-word; /* Перенос слов */
     height: 100px; /* Фиксированная высота для выравнивания карточек */
@@ -62,4 +115,5 @@
     font-weight: 700;
 
     word-break: break-word; /* Разрыв длинного слова */
+} 
 }

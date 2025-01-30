@@ -76,9 +76,10 @@ export function createSection(data) {
   // Добавляем заголовок и контейнер с карточками внутрь секции
   section.append(title, container);
 
-  const brand = document.querySelector('.homePage_brandSection') as HTMLElement;
+  //const brand = document.querySelector('.homePage_brandSection') as HTMLElement;
   // Добавляем готовую секцию в конец <body> текущего документа
-  brand.insertAdjacentElement('afterend', section);
+  //insertAdjacentElement('afterend', section);
+  return section;
 }
 
 // Вызываем функцию createSection с массивом категорий (categories), чтобы отобразить их на странице
