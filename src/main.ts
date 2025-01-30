@@ -9,17 +9,17 @@ import { renderFilters } from './components/FilterForm';
 import { renderProduct } from './components/addToCart/addToCart';
 import { createCheckoutForm } from './components/checkoutForm'
 
-createHeader();
-renderHero();
+// createHeader();
+// renderHero();
 createBrandSection();
-getCategoriesList();
-renderForm();
-createFooter();
-renderFilters();
-fetchAndRenderCategory('groceries');
-renderProduct();
+// getCategoriesList();
+// renderForm();
+// createFooter();
+// renderFilters();
+// fetchAndRenderCategory('groceries');
+// renderProduct();
 
-// Создать и отобразить секцию Checkout
-const checkOut = createCheckoutForm();
-document.body.append(checkOut);
+// // Создать и отобразить секцию Checkout
+// const checkOut = createCheckoutForm();
+// document.body.append(checkOut);
 
