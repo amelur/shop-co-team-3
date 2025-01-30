@@ -76,7 +76,9 @@ export function createSection(data) {
   // Добавляем заголовок и контейнер с карточками внутрь секции
   section.append(title, container);
 
+
   return section.outerHTML;
+
 }
 
 // Вызываем функцию createSection с массивом категорий (categories), чтобы отобразить их на странице

@@ -12,8 +12,3 @@ document.addEventListener('DOMContentLoaded', () => {
   router.resolve();
   createFooter();
 });
-
-//   renderForm();
-//   renderFilters();
-//   renderProductDetail();
-//   cardHandler();
