@@ -1,6 +1,6 @@
 import { sectionHero } from '../../components/hero/hero';
-import { createBrandSection } from '../../components/brandsSection';
-import { getCategoriesList } from '../../components/categories';
+import { createBrandSection } from '../../components/brandsSection/brandsSection';
+import { getCategoriesList } from '../../components/caregories/categories';
 import { cardHandler } from '../../utils/DevHelper';
 
 export async function renderHomePage(): Promise<void> {
