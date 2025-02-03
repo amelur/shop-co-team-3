@@ -1,5 +1,5 @@
-import '../styles/input.css';
-import '../styles/checkoutForm.css';
+import './input.css';
+import './checkoutForm.css';
 import { createInput } from '../components/input/input.ts';
 import { userInfoInterface } from '../../src/assets/data/userInfo.ts';
 // import { placeholdersList } from '../../src/assets/data/userInfo.ts';

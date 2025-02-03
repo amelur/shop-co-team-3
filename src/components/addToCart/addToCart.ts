@@ -15,8 +15,6 @@ export async function fetchProduct(productId: string | null) {
 }
 
 
-
-
 export function renderProduct(product: any) {
   const container = document.getElementById("add") as HTMLElement;
 
@@ -124,8 +122,8 @@ export function renderProduct(product: any) {
   });
 }
 
-export async function renderProductDetail() {
-  const productId = cardId; 
-  const product = await fetchProduct(cardId);
-  renderProduct(product);
-};
+// export async function renderProductDetail() {
+//   const productId = cardId; 
+//   const product = await fetchProduct(cardId);
+//   renderProduct(product);
+// };

@@ -1,5 +1,5 @@
-import { renderFilters } from '../../components/FilterForm';
-import { initFilterFunctionality } from '../../components/FilterRange';
+import { renderFilters } from '../../components/filter/FilterForm';
+import { initFilterFunctionality } from '../../components/filter/FilterRange';
 import { fetchAndRenderCategory } from '../../components/categoryCards/categoryCards';
 
 

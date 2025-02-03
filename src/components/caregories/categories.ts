@@ -1,4 +1,4 @@
-import '../styles/categories.css';
+import './categories.css';
 // Массив строк, содержащий названия категорий, которые будут отображены в виде карточек
 // export const categories = [
 //   "Smartphones",

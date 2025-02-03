@@ -1,10 +1,10 @@
-import '../styles/footer.css';
-import '../styles/base.css';
+import './footer.css';
+// import '../styles/base.css';
 import { renderForm } from './form';
 
 export function createFooter() {
   const footer = document.createElement('footer');
-  footer.innerHTML+=(renderForm());
+  // footer.innerHTML+=(renderForm());
   // Вставляем HTML-контент внутрь этого элемента
   footer.innerHTML += `
   <footer>

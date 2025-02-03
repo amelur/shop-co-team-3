@@ -1,4 +1,4 @@
-import '../styles/form.css';
+import './form.css';
 import '../styles/base.css';
 
 export function renderForm() {

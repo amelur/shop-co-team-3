@@ -17,38 +17,28 @@ footer {
 .footer__wrapper {
   display: flex; 
   justify-content: space-between; 
-  align-items: flex-start; 
+  align-items: center;
   flex-wrap: wrap; 
   gap: 20px; 
-  margin-bottom: 20px; 
+  
+
 }
 
 
 .footer__info-block {
   
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; 
-  align-items: flex-start;
-  margin-left: auto;
 
-  padding: 53px 75px 0; 
-  /* line-height: 1.2; */
-  gap: 40px; 
-  width: 65%;
-  box-sizing: border-box;
 
 }
 
 
 .footer__title {
-  display: flex; 
-  flex-wrap: wrap; 
+  display: flex;  
   justify-content: space-between; 
   align-items: flex-start; 
-
-  width: 30%;
-  margin-left: 25px;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .footer__images-container {

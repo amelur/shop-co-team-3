@@ -1,4 +1,4 @@
-import '../styles/FilterForm.css';
+import './FilterForm.css';
 
 const filtersForm = `
 <div class="filters">
