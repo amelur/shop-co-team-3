@@ -1,13 +1,12 @@
 import Navigo from 'navigo';
 import { renderHomePage } from './pages/home/home';
 import { renderCategoryPage } from './pages/CategoryPage/categoryPage';
-import { renderProductDetail } from './pages/ProductDetailPage/productDetail';
-import { fetchProduct } from './components/addToCart/addToCart';
+import { renderProductDetailPage } from './pages/ProductDetailPage/productDetail';
+// import { fetchProduct } from './components/addToCart/addToCart';
 
 // const router = new Navigo('/');
 
 const router = new Navigo('/', { strategy: 'ALL' });
-
 
 const appElement = document.getElementById('app') as HTMLElement;
 
@@ -27,17 +26,20 @@ router
     } else {
       console.error('Category not found in params');
     }
-    
   })
 
- 
-  // .on('/product/:productId', async (match) => {
-  //   appElement.innerHTML = ''; 
-  //   const productSection = await renderProductDetail(match?.data?.productId);
-  //   appElement.appendChild(productSection);
-  // })
-  
-  
+  .on('/product/:productId', async (match) => {
+    appElement.innerHTML = '';
+    const productID = match?.data?.productId;
+    const productSection = await renderProductDetailPage(productID);
+    appElement.append(productSection);
+  })
+
+  .on('/cart', async () => {
+    appElement.innerHTML = '';
+    // const page = await renderCartPage();
+    // appElement.append(productSection);
+  })
 
   // .on('/category/:id', async (match) => {
   //   appElement.innerHTML = '';

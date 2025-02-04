@@ -1,22 +1,13 @@
-import { createHeader } from '../../components/header';
-// import { renderProductDetail } from '../../components/addToCart/addToCart';
+// import { createHeader } from '../../components/heeder/header';
+import { renderProduct } from '../../components/addToCart/addToCart';
 import { fetchProduct } from '../../components/addToCart/addToCart';
-import { createFooter } from '../../components/footer';
+// import { createFooter } from '../../components/footer/footer';
 
-createHeader();
+export async function renderProductDetailPage(
+  productId: string,
+): Promise<HTMLElement> {
+  const product = await fetchProduct(productId);
+  const page = await renderProduct(product);
 
-// renderProductDetail();
-export async function renderProductDetail(productId: string): Promise<HTMLElement> {
-    const section = document.createElement('section');
-    section.classList.add('product-detail-page'); 
-  
-    const product = await fetchProduct(productId);
-    section.appendChild(renderProduct(product)); 
-    console.log('Рендеринг продукта:', productId);
-    return section;
-  }
-  
-
-
-createFooter();
-
+  return page;
+}

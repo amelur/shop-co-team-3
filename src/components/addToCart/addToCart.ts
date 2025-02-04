@@ -1,22 +1,21 @@
 import './addToCart.css';
+import router from '../../router';
 import starImg from '../../assets/icons/star.svg';
 import starHalfImg from '../../assets/icons/star-half.svg';
 import minusIcon from '../../assets/icons/minus.svg';
 import plusIcon from '../../assets/icons/plus.svg';
 
-
 const urlCardId = new URLSearchParams(window.location.search);
 const cardId = urlCardId.get('id');
-
 
 export async function fetchProduct(productId: string | null) {
   const response = await fetch(`https://dummyjson.com/products/${productId}`);
   return response.json();
 }
 
-
-export function renderProduct(product: any) {
-  const container = document.getElementById("add") as HTMLElement;
+export async function renderProduct(product: any) {
+  const container = document.createElement('section') as HTMLElement;
+  container.classList.add('details');
 
   container.innerHTML = `
   <section class="details">
@@ -33,13 +32,16 @@ export function renderProduct(product: any) {
       <h2>${product.title}</h2>
 
       <div class="rating">
-        ${createStars(product.rating)} <!-- Генерация звёзд -->
+      
+        createStars(product.rating) <!-- Генерация звёзд -->
   <p class="rating-num">${product.rating}/5</p>
       </div>
 
       <div class="price-container">
-        <span class="price">$${(product.price - (product.price * (product.discountPercentage / 100))).toFixed(2)
-        }</span>
+        <span class="price">$${(
+          product.price -
+          product.price * (product.discountPercentage / 100)
+        ).toFixed(2)}</span>
         <span class="old-price">$${product.price}</span>
         <div class="discount">-${product.discountPercentage}%</div>
       </div>
@@ -82,48 +84,46 @@ export function renderProduct(product: any) {
      </section>
   `;
 
-
-    // Функция для создания звезд рейтинга
-    function createStars(rating: number): string {
-      const fullStars = Math.floor(rating); // Число полных звезд
-      const hasHalfStar = rating % 1 >= 0.5; 
-      let starsHtml = "";
-    
-       const fullStarUrl = starImg; 
-       const halfStarUrl = starHalfImg; 
-    
-    // Добавляем полные звезды
-    for (let i = 0; i < fullStars; i++) {
-      starsHtml += `<img src="${fullStarUrl}" alt="Full Star">`;
-    }
-    
-    // Добавляем половину звезды, если нужно
-    if (hasHalfStar) {
-      starsHtml += `<img src="${halfStarUrl}" alt="Half Star">`;
-    }
-    
-    return `<span class="stars">${starsHtml}</span>`;
-    }
-    
-
- 
-  let quantity = 1;
-  document.getElementById("decrement").addEventListener("click", () => {
-    if (quantity > 1) {
-      quantity--;
-      document.getElementById("quantity").innerText = quantity.toString();
-    }
+  const addToCartButton = container.querySelector(
+    '.add-to-cart',
+  ) as HTMLButtonElement;
+  addToCartButton.addEventListener('click', () => {
+    router.navigate(`/cart`);
   });
-  document.getElementById("increment").addEventListener("click", () => {
-    if (quantity < product.stock) {
-      quantity++;
-      document.getElementById("quantity").innerText = quantity.toString();
-    }
-  });
+  // // Функция для создания звезд рейтинга
+  // function createStars(rating: number): string {
+  //   const fullStars = Math.floor(rating); // Число полных звезд
+  //   const hasHalfStar = rating % 1 >= 0.5;
+  //   let starsHtml = '';
+
+  //   const fullStarUrl = starImg;
+  //   const halfStarUrl = starHalfImg;
+
+  //   // Добавляем полные звезды
+  //   for (let i = 0; i < fullStars; i++) {
+  //     starsHtml += `<img src="${fullStarUrl}" alt="Full Star">`;
+  //   }
+
+  //   // Добавляем половину звезды, если нужно
+  //   if (hasHalfStar) {
+  //     starsHtml += `<img src="${halfStarUrl}" alt="Half Star">`;
+  //   }
+
+  //   return `<span class="stars">${starsHtml}</span>`;
+  // }
+
+  // let quantity = 1;
+  // document.getElementById('decrement').addEventListener('click', () => {
+  //   if (quantity > 1) {
+  //     quantity--;
+  //     document.getElementById('quantity').innerText = quantity.toString();
+  //   }
+  // });
+  // document.getElementById('increment').addEventListener('click', () => {
+  //   if (quantity < product.stock) {
+  //     quantity++;
+  //     document.getElementById('quantity').innerText = quantity.toString();
+  //   }
+  // });
+  return container;
 }
-
-// export async function renderProductDetail() {
-//   const productId = cardId; 
-//   const product = await fetchProduct(cardId);
-//   renderProduct(product);
-// };
