@@ -67,7 +67,9 @@ function createItem(text: string, textStyle: string, price: string, priceStyle: 
 export async function createCheckoutForm(cartID: number = 1):Promise<HTMLElement> {
     
     // Вся секция, будет содержать название и форму, вертикальное расположение
-    const checkoutFormSection = createSection('createCheckoutFormSection');
+    const checkoutFormSection = document.createElement('form');
+    checkoutFormSection.classList.add('createCheckoutFormSection');
+    
     // Секция с полями и саммари
     const formSection = createSection('formSection');
     // Секция с полями
