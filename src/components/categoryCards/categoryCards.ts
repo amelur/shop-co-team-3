@@ -114,7 +114,7 @@ function createCards(data: Product[]): HTMLDivElement {
 
     // Добавил обработчик перехода к деталям продукта
     card.addEventListener('click', () => {
-      router.navigate(`/category/${card.id}`);
+      router.navigate(`/product/${card.id}`);
     });
 
     fragment.append(card);
