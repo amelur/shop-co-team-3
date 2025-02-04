@@ -1,11 +1,43 @@
 import './input.css';
 import './checkoutForm.css';
-import { createInput } from '../components/input/input.ts';
-import { userInfoInterface } from '../../src/assets/data/userInfo.ts';
-// import { placeholdersList } from '../../src/assets/data/userInfo.ts';
+import { createInput } from '../../components/input/input.ts';
+import { createOrderSummarySection } from './orderSummarySection.ts';
 
-// const userInfo: userInfoInterface = {};
+interface Product {
+    id: number;
+    title: string;
+    price: number;
+    quantity: number;
+    total: number;
+    discountPercentage: number;
+    discountedPrice: number;
+  }
+  
+  interface Cart {
+    id: number;
+    products: Product[];
+    total: number;
+    discountedTotal: number;
+    userId: number;
+    totalProducts: number;
+    totalQuantity: number;
+  }
 
+export async function getCartInformation(cartID: number = 1): Promise<Cart | null> {
+  try {
+    const res = await fetch('https://dummyjson.com/carts/'+cartID);
+    if (!res.ok) {
+      throw new Error('Ошибка загрузки данных корзины');
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error('Ошибка при получении данных о корзине:', error);
+    return null;
+  }
+}
+
+// ===================================================================================
 // Функция создания секции с заданным стилем
 export function createSection(style: string):HTMLElement{
     const section = document.createElement('div');
@@ -31,43 +63,11 @@ function createItem(text: string, textStyle: string, price: string, priceStyle: 
     return div;
 }
 
-function createOrderSummatySection(subtotal:number, discountInPercent:number=0){
-    const section = createSection('orderSummarySection');
-
-    // Название секции саммари
-    const summaryTitle = document.createElement('h2');
-    summaryTitle.textContent = "Order Summary";
-    
-    const separator = createSection('separator');
-
-    // Добавляем статик текст и цены
-    const itemSubtotal = createItem('Subtotal', 'grayStyle', '$'+subtotal.toString(), 'blackBoldText');
-
-    // Создать кнопку
-    const button = document.createElement('button');
-    button.textContent = 'Go to Payment '+ '\u2192';
-    button.className = 'buttonBlack';
-
-    if (discountInPercent>0) {
-        const discount = parseFloat((subtotal*discountInPercent/100).toFixed(2));
-        const total = parseFloat((subtotal*(100-discountInPercent)/100).toFixed(2));
-        const itemDiscount = createItem('Discount (-'+discountInPercent.toString()+'%)', 'grayStyle', '-$'+discount.toString(), 'redText');
-        const itemTotal = createItem('Total', 'blackStyle', '$'+total.toString(), 'blackBigBoldText');
-        section.append(summaryTitle, itemSubtotal,itemDiscount, separator, itemTotal, button);
-    }
-    else {
-        const itemTotal = createItem('Total', 'blackStyle', '$'+subtotal.toString(), 'blackBigBoldText');
-        section.append(summaryTitle, itemSubtotal, separator, itemTotal, button);
-    }
-
-    return section;
-}
-
 //---------------- Основная функция создания формы Checkout -------------------------------------//
-export function createCheckoutForm():HTMLElement {
+export async function createCheckoutForm(cartID: number = 1):Promise<HTMLElement> {
     
     // Вся секция, будет содержать название и форму, вертикальное расположение
-    const createCheckoutFormSection = createSection('createCheckoutFormSection');
+    const checkoutFormSection = createSection('createCheckoutFormSection');
     // Секция с полями и саммари
     const formSection = createSection('formSection');
     // Секция с полями
@@ -101,28 +101,16 @@ export function createCheckoutForm():HTMLElement {
     const summaryTitle = document.createElement('h2');
     summaryTitle.textContent = "Order Summary";
     
-    const separator3 = createSection('separator');
-    // Добавляем статик текст и цены
-    const itemSubtotal = createItem('Subtotal', 'grayStyle', '$565', 'blackBoldText');
-    const itemDiscount = createItem('Discount (-20%)', 'grayStyle', '-$113', 'redText');
-    const itemTotal = createItem('Total', 'blackStyle', '$467', 'blackBigBoldText');
-    // Создать кнопку
-    const button = document.createElement('button');
-    button.textContent = 'Go to Payment '+ '\u2192';
-    button.className = 'buttonBlack';
-
-    // Наполняем секцию саммари полями и кнопкой
-    const orderSummarySection = createOrderSummatySection(522.66, 18);
-
+    const data = await getCartInformation (cartID);
+    
+    const orderSummarySection = createOrderSummarySection(data);
+    
     // Объединяем секцию с полями и с саммари
     formSection.append(fieldsSection, orderSummarySection);
 
     // Собираем всю секцию: Название и форма
-    createCheckoutFormSection.append(sectionTitle, formSection);
+    checkoutFormSection.append(sectionTitle, formSection);
 
-// Отобразить всю секцию Checkout
-// document.body.appendChild(createCheckoutFormSection);
-// Вернуть секцию Checkout
-        return createCheckoutFormSection;
+    return (checkoutFormSection);
 }
-  
+
