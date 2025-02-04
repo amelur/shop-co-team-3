@@ -84,6 +84,16 @@ export function createOrderSummarySection(data: Cart | null){
 
     button.addEventListener('click', () => {
       router.navigate('/checkout');
+      let currentPath: string = window.location.pathname;
+      if (currentPath = '/cart') {
+        router.navigate('/checkout');
+      } else if (currentPath = '/checkout') {
+        router.navigate('/payment');
+      }
+      else if (currentPath = '/payment') {
+        router.navigate('/confirm');
+      }
+      
     });
 
     if (discountInPercent > 0) {
