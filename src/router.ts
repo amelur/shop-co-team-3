@@ -2,9 +2,8 @@ import Navigo from 'navigo';
 import { renderHomePage } from './pages/home/home';
 import { renderCategoryPage } from './pages/CategoryPage/categoryPage';
 import { renderProductDetailPage } from './pages/ProductDetailPage/productDetail';
-// import { fetchProduct } from './components/addToCart/addToCart';
-
-// const router = new Navigo('/');
+import { createCart } from './components/yourcart/yourcart';
+//const router = new Navigo('/');
 
 const router = new Navigo('/', { strategy: 'ALL' });
 
@@ -37,12 +36,12 @@ router
 
   .on('/cart', async () => {
     appElement.innerHTML = '';
-    // const page = await renderCartPage();
-    // appElement.append(productSection);
+   const page = await createCart();
+    appElement.append(page);
   })
 
-  // .on('/category/:id', async (match) => {
-  //   appElement.innerHTML = '';
+  //.on('/category/:id', async (match) => {
+ //appElement.innerHTML = '';
   //   console.log(match);
   //   renderProductDetail(match?.data?.id);
   // })

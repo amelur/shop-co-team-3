@@ -1,0 +1,40 @@
+body {
+    text-align: left;
+  }
+  
+  #app {
+    max-width: 720px;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  h1 {
+    text-align: left;
+    font-size: 2.5rem;
+    font-family: Poppins;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+  }
+  
+  .message-box {
+    display: flex;
+    text-align: left;
+    padding: 25px 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .message-box p {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555555;
+    line-height: 1.5;
+    text-align: left !important;
+  }
+  
