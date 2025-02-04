@@ -79,6 +79,7 @@ export function createOrderSummarySection(data: Cart | null){
     const button = document.createElement('button');
     button.textContent = 'Go to Payment '+ '\u2192';
     button.className = 'buttonBlack';
+    button.type = 'submit';
 
     if (discountInPercent > 0) {
         const discount = parseFloat((data.total*discountInPercent/100).toFixed(2));
