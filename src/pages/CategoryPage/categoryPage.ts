@@ -8,7 +8,7 @@ export async function renderCategoryPage(
 ): Promise<HTMLElement> {
   const sectionCategory = document.createElement('section');
   sectionCategory.className = 'category__page';
-  sectionCategory.innerHTML += renderFilters();
+  sectionCategory.innerHTML = renderFilters();
 
   sectionCategory.append(await fetchAndRenderCategory(category));
   setTimeout(() => {
@@ -16,3 +16,5 @@ export async function renderCategoryPage(
   }, 0);
   return sectionCategory;
 }
+
+

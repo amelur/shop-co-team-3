@@ -12,7 +12,7 @@ const filtersForm = `
     </span>
   </div>
   <hr class="filters-divider">
-  
+   
   <!-- СОРТИРОВКА -->
   <div class="filters-section">
     <h3 class="filters-subtitle">Sort</h3>
