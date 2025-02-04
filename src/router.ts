@@ -3,6 +3,9 @@ import { renderHomePage } from './pages/home/home';
 import { renderCategoryPage } from './pages/CategoryPage/categoryPage';
 import { renderProductDetailPage } from './pages/ProductDetailPage/productDetail';
 import { createCart } from './components/yourcart/yourcart';
+import { createOrderSummarySection } from './components/checkout/orderSummarySection';
+import { getCartInformation } from './components/checkout/orderSummarySection';
+import { createCheckoutForm } from './components/checkout/checkoutForm';
 //const router = new Navigo('/');
 
 const router = new Navigo('/', { strategy: 'ALL' });
@@ -37,9 +40,17 @@ router
   .on('/cart', async () => {
     appElement.innerHTML = '';
    const page = await createCart();
-    appElement.append(page);
+   const data = await getCartInformation(3);
+    const orderSummarySection = createOrderSummarySection(data);
+    appElement.append(page, orderSummarySection);
   })
-
+  
+  .on('/checkout', async () => {
+    appElement.innerHTML = '';
+    const checkout = await createCheckoutForm(3);
+    appElement.append(checkout);
+  })
+  
   //.on('/category/:id', async (match) => {
  //appElement.innerHTML = '';
   //   console.log(match);

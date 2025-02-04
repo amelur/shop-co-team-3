@@ -1,3 +1,4 @@
+import router from '../../router';
 import './orderSummarySection.css';
 
 interface Product {
@@ -80,6 +81,10 @@ export function createOrderSummarySection(data: Cart | null){
     button.textContent = 'Go to Payment '+ '\u2192';
     button.className = 'buttonBlack';
     button.type = 'submit';
+
+    button.addEventListener('click', () => {
+      router.navigate('/checkout');
+    });
 
     if (discountInPercent > 0) {
         const discount = parseFloat((data.total*discountInPercent/100).toFixed(2));
