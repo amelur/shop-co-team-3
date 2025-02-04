@@ -6,6 +6,8 @@ import { createCart } from './components/yourcart/yourcart';
 import { createOrderSummarySection } from './components/checkout/orderSummarySection';
 import { getCartInformation } from './components/checkout/orderSummarySection';
 import { createCheckoutForm } from './components/checkout/checkoutForm';
+import { createPaymentForm } from './components/payment/payment';
+import { createConfirmationPage } from './components/orderConfirmation/confirmation';
 //const router = new Navigo('/');
 
 const router = new Navigo('/', { strategy: 'ALL' });
@@ -49,6 +51,21 @@ router
     appElement.innerHTML = '';
     const checkout = await createCheckoutForm(3);
     appElement.append(checkout);
+  })
+  
+  .on('/payment', async () => {
+    appElement.innerHTML = '';
+    const payment = await createPaymentForm();
+    const data = await getCartInformation(3);
+    const orderSummarySection = createOrderSummarySection(data);
+    appElement.append(payment, orderSummarySection);
+  })
+  
+
+  .on('/confirm', async () => {
+    appElement.innerHTML = '';
+    const confirm = createConfirmationPage();
+    appElement.append(confirm);
   })
   
   //.on('/category/:id', async (match) => {

@@ -1,9 +1,8 @@
 import './confirmation.css';
 
-export function createConfirmationPage(appId: string): void {
+export function createConfirmationPage(): HTMLElement {
   // Получаем контейнер для приложения
-
-  const app = document.getElementById(appId) as HTMLElement;
+const container = document.createElement('div');
 
   // Создаем заголовок
   const heading = document.createElement("h1");
@@ -20,6 +19,6 @@ export function createConfirmationPage(appId: string): void {
   `;
 
   // Добавляем элементы в DOM
-  app.append(heading);
-  app.append(messageBox);
+  container.append(heading, messageBox);
+  return container;
 }
