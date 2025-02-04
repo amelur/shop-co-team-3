@@ -1,5 +1,5 @@
 import './form.css';
-import '../styles/base.css';
+import '/src/styles/base.css';
 
 export function renderForm() {
   const newsletterForm = `

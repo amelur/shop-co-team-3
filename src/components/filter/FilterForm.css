@@ -85,7 +85,7 @@
 
 .range-track::after {
   content: '';
-  position: absolute;
+  position: absolute; 
   height: 100%;
   background: #000;
   border-radius: 2px;
