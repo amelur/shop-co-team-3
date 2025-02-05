@@ -1,16 +1,17 @@
 import './footer.css';
-// import '../styles/base.css';
+import'../../base.css';
 import { renderForm } from './form';
 
 export function createFooter() {
   const footer = document.createElement('footer');
-  // footer.innerHTML+=(renderForm());
+  footer.innerHTML+=(renderForm());
   // Вставляем HTML-контент внутрь этого элемента
   footer.innerHTML += `
-  <footer>
+ <footer>
 
   <div class="footer__wrapper">
-      <div class="footer__title">
+     <div class="footer__info-block">
+       <div class="footer__title">
         
         
           <h2 class="footer__title-text">SHOP.CO</h2>
@@ -41,7 +42,7 @@ export function createFooter() {
 
 
 
-    <div class="footer__info-block">
+   <div class="footer__blocks-CHFR">
 
       <div class="footer__company">
         <h4 class="footer__heading">C O M P A N Y</h4>
@@ -77,7 +78,7 @@ export function createFooter() {
 
     </div>
    </div> 
-
+</div>
     
     <hr class="footer__hr">
 
