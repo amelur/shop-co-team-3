@@ -1,0 +1,113 @@
+.product-images-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: top;
+  margin: 0 auto;
+  width: fit-content;
+  height: auto;
+  gap: 14px;
+}
+
+.product-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: top;
+  margin: 0 auto;
+  width: auto;
+  height: 100%;
+  border: 1px solid white;
+  border-style: solid;
+  border-radius: 20px;
+  gap: 14px
+}
+
+
+.product-little-images img {
+  width: auto;
+  height: 106px;
+  object-fit: cover;
+  background-color: lightgrey;
+  border: 1px solid white;
+  border-style: solid;
+  border-radius: 20px;
+  /* border-radius: 20px; */
+}
+
+.product-image-selected {
+    border: 1px solid #000000;
+    width: auto;
+    height: 106px;
+    object-fit: cover;
+    background-color: lightgrey;
+    border-radius: 20px;
+}
+
+
+.product-big-images img {
+    width: 356px;
+    height: auto;
+    object-fit: cover;
+    background-color: lightgrey;
+  }
+
+@media screen and (min-width: 600px) {
+    .product-images-section {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: top;
+        margin: 0 auto;
+        width: fit-content;
+        height: auto;
+        gap: 14px;
+      }
+      
+      .product-images {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: top;
+        margin: 0 auto;
+        width: auto;
+        height: 100%;
+        border: 2px solid white;
+        border-style: solid;
+        border-radius: 20px;
+        gap: 14px
+      }
+      
+      
+      .product-little-images img {
+        width: 152px;
+        height: auto;
+        object-fit: cover;
+        background-color: lightgrey;
+        border: 2px solid white;
+        border-style: solid;
+        border-radius: 20px;
+        /* border-radius: 20px; */
+      }
+      
+      .product-image-selected {
+          border: 1px solid #000000;
+          width: 152px;
+          height: auto;
+          object-fit: cover;
+          background-color: lightgrey;
+          
+      }
+      
+      
+      .product-big-images img {
+          width: 500px;
+          height: auto;
+          object-fit: cover;
+          background-color: lightgrey;
+          border: 2px solid white;
+          border-style: solid;
+          border-radius: 20px;
+        }
+      
+}
