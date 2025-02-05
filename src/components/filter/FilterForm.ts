@@ -28,11 +28,11 @@ const filtersForm = `
     <h3 class="filters-subtitle">Price</h3>
     <div class="filters-price-range">
       <div class="range-track"></div>
-      <input type="range" min="0" max="200" value="50" class="price-slider" id="price-min">
-      <input type="range" min="0" max="200" value="200" class="price-slider" id="price-max">
+      <input type="range" min="0" max="5000" value="50" class="price-slider" id="price-min">
+      <input type="range" min="0" max="5000" value="5000" class="price-slider" id="price-max">
       <div class="price-labels">
         <span id="price-min-value">$50</span>
-        <span id="price-max-value">$200</span>
+        <span id="price-max-value">$5000</span>
       </div>
     </div>
   </div>
