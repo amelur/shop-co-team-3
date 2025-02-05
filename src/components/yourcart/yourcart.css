@@ -1,77 +1,71 @@
 /* Общий контейнер корзины */
 .cart-wrapper {
-    margin-left: 50px;
-    max-width: 715px; 
-   
-    box-sizing: border-box; 
-    font-family: 'Poppins';
+  max-width: 100%;
+  font-family: 'Poppins';
 }
 
 .cart {
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 15px;
-    background-color: #fff;
+  max-width: 100%;
+  width: 715px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  background-color: #fff;
 }
 
 .cart-title {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 /* Элемент корзины */
 .cart-item {
-    display: flex;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 15px;
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px;
 }
 
 .cart-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 /* Изображение товара */
 .cart-item-image {
-    width: 124px;
-    height: 124px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-right: 20px;
+  width: 124px;
+  height: 124px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
 }
 
 /* Информация о товаре */
 .cart-item-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cart-item-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .cart-item-price {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
 
 /* Скидка на товар */
 .cart-item-discount {
-    background-color: #ffeaea;
-    color: #ff4d4d;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 14px;
-    margin-left: 10px;
+  background-color: #ffeaea;
+  color: #ff4d4d;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  margin-left: 10px;
 }
-
-
-

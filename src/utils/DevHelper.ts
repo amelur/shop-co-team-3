@@ -24,3 +24,10 @@ export function cardHandler(): void {
     }
   });
 }
+
+export function createAppTitle(title: string): HTMLElement {
+  const appTitle = document.createElement('h1');
+  appTitle.textContent = title;
+  appTitle.className = 'app-title';
+  return appTitle;
+}
