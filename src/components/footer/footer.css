@@ -5,55 +5,49 @@ html {
 footer {
   display: flex;
   flex-direction: column; 
-  align-items: stretch;
-  
+  align-items: center;
   font-family: Rubik;
   background-color: #F0F0F0;
   width: 100%;
+  /* height: 499px; */
   box-sizing: border-box; 
-  
 }
 
 .footer__wrapper {
   display: flex; 
-  justify-content: space-between; 
-  align-items: center;
   flex-wrap: wrap; 
   gap: 20px; 
-  
-
 }
-
 
 .footer__info-block {
-  
   display: flex;
-
-
+  width: 1240px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 30px;
 }
 
+.footer__blocks-CHFR {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 120px;
+}
 
 .footer__title {
-  display: flex;  
-  justify-content: space-between; 
-  align-items: flex-start; 
-  flex-direction: column;
-  gap: 30px;
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 35px;
+  
 }
 
 .footer__images-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
 }
 
-.footer__title-direction {
-  margin-left: 15px;
-}
-
+/* Общие стили для текста и ссылок */
 .footer__title-direction p {
-  margin-top: 15px;
   color: #00000099;
 }
 
@@ -65,18 +59,22 @@ footer {
 .footer__company,
 .footer__help,
 .footer__faq,
-.footer__resources, h4 {
-  margin-top: -15px;
+.footer__resources,
+h4 {
+  /* margin-top: 10px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 19px;
 }
 
 .footer__info-block h4 {
-  margin: 0 0 10px;
   color: #000;
 }
 
 .footer__info-block a {
   display: block;
-  margin: 10px 0;
+  /* margin: 10px 0; */
   text-decoration: none;
   color: #00000099;
 }
@@ -86,11 +84,8 @@ footer {
 }
 
 .footer__hr {
-  border: none;
+  width: 1290px;
   height: 1px;
-  background-color: #0000001A;
-  margin: 0 auto;
-  width: 96%; 
 }
 
 .under__hr {
@@ -99,102 +94,145 @@ footer {
   align-items: center;
   margin-bottom: 20px;
   max-width: 100%;
-  gap: 530px;
+  gap: 640px;
+  padding-top: 14px;
 }
 
 .footer__copyright {
-  color: #00000099;
-  font-size: 18px;
+  color: rgba(0, 0, 0, 0.60);
+text-align: right;
+font-family: Rubik;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 .footer__credit-cards {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;  
-} 
-
-
-
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+ 
 
 @media (max-width: 768px) {
   .footer__wrapper {
-    flex-direction: column; 
-    align-items: center; 
-    gap: 10px; 
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
     margin-bottom: 10px;
+  }
+
+  .footer__blocks-CHFR {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрируем контент */
+    gap: 20px;
+    width: 100%;
   }
 
   .footer__info-block {
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-    width: 100%; 
-    padding: 10px; 
-    gap: 20px; 
+    flex-wrap: wrap;
+    justify-content: space-between; /* Две колонки */
+    gap: 20px;
+    width: 100%;
+    max-width: 600px; /* Ограничиваем ширину, чтобы блоки не растягивались */
   }
 
-  .footer__info-block > div {
-    flex: 1 1 calc(50% - 20px); 
-    box-sizing: border-box; 
+  .footer__blocks-CHFR > div {
+    flex: 1 1 calc(50% - 10px); /* Две равные колонки */
+    box-sizing: border-box;
+    min-width: 150px; /* Гарантия, что колонки не схлопнутся */
   }
 
-
-  .footer__title {
-    width: 75%;
-    margin-left: -120px;
-  }
-
-  .footer__title-direction h2 {
-    font-size: 24px; 
-  }
-
-  .footer__images-container {
-    flex-wrap: wrap; 
+  .footer__company,
+  .footer__help,
+  .footer__faq,
+  .footer__resources {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
   }
 
+  .footer__title {
+    width: 90%;
+    gap: 20px;
+    /* text-align: center; */
+  }
+
+  .footer__title-direction {
+    width: 100%;
+  }
+
+  .footer__images-container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer__hr {
+    width: 358px;
+  }
+
   .under__hr {
-    flex-direction: column; 
-    gap: 5px; 
+    flex-direction: column;
+    gap: 5px;
   }
 
   .footer__credit-cards {
-    justify-content: center; 
+    justify-content: center;
     margin-top: 10px;
   }
 
   .footer__copyright {
-    font-size: 16px; 
-    text-align: center; 
+    font-size: 16px;
+    text-align: center;
   }
 }
 
-
+/* Две колонки даже на узких экранах */
 @media (max-width: 480px) {
-  .footer__title-direction h2 {
-    font-size: 20px; 
-  }
-
   .footer__info-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .footer__blocks-CHFR {
     padding: 10px;
   }
 
-  .footer__title {
-    width: 90%;
-    margin-right: -100px;
-    margin-bottom: 20px;
+  .footer__blocks-CHFR > div {
+    flex: 1 1 calc(50% - 10px); /* Сохраняем две колонки */
+    min-width: 140px; /* Защита от схлопывания */
   }
 
-  .footer__wrapper {
-    gap: 5px; 
+  .footer__title {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .footer__credit-cards {
+    gap: 2px;
   }
 }
 
-
+/* Для 390px ширины тоже оставляем две колонки */
 @media (max-width: 390px) {
-  .footer__title {
-    width: 90%;
-    /* margin-left: 350px; */
-  
+  .footer__info-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
   }
+
+  .footer__blocks-CHFR > div {
+    flex: 1 1 calc(50% - 10px); /* Всё ещё две колонки */
+    min-width: 120px; /* Минимальная ширина */
+  }
+
+  
 }
