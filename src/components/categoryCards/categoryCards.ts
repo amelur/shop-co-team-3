@@ -12,6 +12,12 @@ interface Product {
   category: string;
 }
 
+let allProducts: Product[] = [];
+
+export function getAllProducts(): Product[] {
+  return allProducts;
+}
+
 export async function fetchAndRenderCategory(
   property: string,
 ): Promise<HTMLElement> {
@@ -20,6 +26,8 @@ export async function fetchAndRenderCategory(
       `https://dummyjson.com/products/category/${property}`,
     );
     const data = await res.json();
+    allProducts = data.products;
+
     const categories = renderCategorySection(data.products);
     return categories;
   } catch (error) {
