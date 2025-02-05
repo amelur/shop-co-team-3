@@ -1,26 +1,23 @@
-import "./header.css";
+import './header.css';
 
 export function createHeader() {
   const header = document.createElement('header');
-  const logo = document.createElement('div');
+  const logo = document.createElement('a');
+  logo.href = '/';
+
   const icons = document.createElement('div');
   const burgerMenu = document.createElement('div');
-  const separator = document.createElement('div');
 
- 
-  header.className = 'header'; 
+  header.className = 'header';
   logo.className = 'logo';
   icons.className = 'icons';
   burgerMenu.className = 'headerburgermenu';
-  separator.className = 'header-separator';
-
 
   burgerMenu.innerHTML = `
   <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
   </svg>
   `;
-
 
   logo.append(burgerMenu);
   logo.innerHTML += `<span>SHOP.CO<span>`;
@@ -35,14 +32,8 @@ export function createHeader() {
     </svg>
 `;
 
-  
-
   header.appendChild(logo);
   header.appendChild(icons);
-  header.appendChild(separator);
-
 
   document.body.prepend(header);
-
-
 }

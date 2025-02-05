@@ -3,30 +3,34 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 100px;
   background-color: white;
   font-family: 'Poppins';
+  padding: 0 100px;
   @media (max-width: 768px) {
-    padding: 10px 16px;
+    padding: 0 16px;
+  }
 }
-}
- 
+
 .logo span {
+  color: #000;
+  font-family: Poppins;
   font-size: 32px;
-  font-weight: bold;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
- 
+
 .icons {
   display: flex;
   gap: 20px;
 }
 
 .headerburgermenu {
-  display: none; 
+  display: none;
   cursor: pointer;
   @media (max-width: 768px) {
     display: flex;
-}
+  }
 }
 
 /* 
@@ -42,19 +46,9 @@
   }
 } */
 
-.logo{
+.logo {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 16px;
-}
-
-
-.header-separator {
-  height: 1px; 
-  background-color: rgba(0, 0, 0, 0.1); 
-  width: 100%; 
-  margin-top: 10px; 
-  flex-basis: 100%; 
-  align-self: stretch; 
 }

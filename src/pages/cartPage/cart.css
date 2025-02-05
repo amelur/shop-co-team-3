@@ -1,0 +1,22 @@
+.cartPage {
+  padding: 28px 100px 60px;
+}
+.cartPageWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.cart-title-container {
+  color: #000;
+  font-family: Poppins;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-bottom: 18px;
+}

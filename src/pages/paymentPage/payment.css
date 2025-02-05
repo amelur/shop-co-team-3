@@ -1,0 +1,9 @@
+.paymentPage {
+  padding: 24px 100px 60px;
+}
+
+.paymentWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}

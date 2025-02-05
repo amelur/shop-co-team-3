@@ -22,3 +22,16 @@ body {
   }
 }
 
+#app {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app-title {
+  margin: 22px 0 18px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

@@ -1,81 +1,116 @@
 import Navigo from 'navigo';
 import { renderHomePage } from './pages/home/home';
-import { renderCategoryPage } from './pages/CategoryPage/categoryPage';
-import { renderProductDetailPage } from './pages/ProductDetailPage/productDetail';
-import { createCart } from './components/yourcart/yourcart';
-import { createOrderSummarySection } from './components/checkout/orderSummarySection';
-import { getCartInformation } from './components/checkout/orderSummarySection';
+import { renderCategoryPage } from './pages/categoryPage/categoryPage';
+import { renderProductDetailPage } from './pages/productDetailPage/productDetail';
+import { renderCartPage } from './pages/cartPage/cart';
+import { renderCheckoutPage } from './pages/checkoutPage/checkout';
+import { renderPaymentPage } from './pages/paymentPage/payment';
+
 import { createCheckoutForm } from './components/checkout/checkoutForm';
-import { createPaymentForm } from './components/payment/payment';
+
 import { createConfirmationPage } from './components/orderConfirmation/confirmation';
-//const router = new Navigo('/');
 
 const router = new Navigo('/', { strategy: 'ALL' });
 
 const appElement = document.getElementById('app') as HTMLElement;
 
-router
+const clearApp = () => {
+  appElement.innerHTML = '';
+};
 
+const showErrorMessage = (message: string) => {
+  clearApp();
+  const errorElement = document.createElement('div');
+  errorElement.innerHTML = `<h1>Ошибка</h1><p>${message}</p>`;
+  errorElement.style.color = 'red';
+  errorElement.style.textAlign = 'center';
+  appElement.append(errorElement);
+};
+
+router
   .on('/', async () => {
-    appElement.innerHTML = '';
-    await renderHomePage();
+    try {
+      clearApp();
+      await renderHomePage();
+    } catch (error) {
+      showErrorMessage('Не удалось загрузить главную страницу.');
+    }
   })
 
   .on('/category/:category', async (match) => {
-    appElement.innerHTML = '';
-    const category = match?.data?.category;
-    if (category) {
-      const categorySection = await renderCategoryPage(category);
-      appElement.append(categorySection);
-    } else {
-      console.error('Category not found in params');
+    try {
+      clearApp();
+      const category = match?.data?.category;
+      if (category) {
+        const categorySection = await renderCategoryPage(category);
+        appElement.append(categorySection);
+      } else {
+        throw new Error('Категория отсутствует в параметрах.');
+      }
+    } catch (error) {
+      showErrorMessage('Ошибка загрузки категории.');
     }
   })
 
   .on('/product/:productId', async (match) => {
-    appElement.innerHTML = '';
-    const productID = match?.data?.productId;
-    const productSection = await renderProductDetailPage(productID);
-    appElement.append(productSection);
+    try {
+      clearApp();
+      const productID = match?.data?.productId;
+      if (productID) {
+        const productSection = await renderProductDetailPage(productID);
+        appElement.append(productSection);
+      } else {
+        throw new Error('ID продукта отсутствует в параметрах.');
+      }
+    } catch (error) {
+      showErrorMessage('Ошибка загрузки продукта.');
+    }
   })
 
   .on('/cart', async () => {
-    appElement.innerHTML = '';
-   const page = await createCart();
-   const data = await getCartInformation(3);
-    const orderSummarySection = createOrderSummarySection(data);
-    appElement.append(page, orderSummarySection);
+    try {
+      clearApp();
+      const page = await renderCartPage();
+      appElement.append(page);
+    } catch (error) {
+      showErrorMessage('Ошибка загрузки корзины.');
+      console.error(error);
+    }
   })
-  
+
   .on('/checkout', async () => {
-    appElement.innerHTML = '';
-    const checkout = await createCheckoutForm(3);
-    appElement.append(checkout);
+    try {
+      clearApp();
+      const checkout = await renderCheckoutPage();
+      appElement.append(checkout);
+    } catch (error) {
+      showErrorMessage('Ошибка загрузки оформления заказа.');
+      console.error(error);
+    }
   })
-  
+
   .on('/payment', async () => {
-    appElement.innerHTML = '';
-    const payment = await createPaymentForm();
-    const data = await getCartInformation(3);
-    const orderSummarySection = createOrderSummarySection(data);
-    appElement.append(payment, orderSummarySection);
+    try {
+      clearApp();
+      const page = await renderPaymentPage();
+      appElement.append(page);
+    } catch (error) {
+      showErrorMessage('Ошибка загрузки страницы оплаты.');
+    }
   })
-  
 
   .on('/confirm', async () => {
-    appElement.innerHTML = '';
-    const confirm = createConfirmationPage();
-    appElement.append(confirm);
+    try {
+      clearApp();
+      const confirm = createConfirmationPage();
+      appElement.append(confirm);
+    } catch (error) {
+      showErrorMessage('Ошибка загрузки подтверждения заказа.');
+    }
   })
-  
-  //.on('/category/:id', async (match) => {
- //appElement.innerHTML = '';
-  //   console.log(match);
-  //   renderProductDetail(match?.data?.id);
-  // })
 
   .notFound(() => {
-    appElement.innerHTML = '<h1>Страница не найдена</h1>';
+    showErrorMessage('Страница не найдена.');
   });
 
 router.resolve();
