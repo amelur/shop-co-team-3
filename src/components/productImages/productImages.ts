@@ -38,52 +38,63 @@
 //         img2.classList.add('product-little-images');
 //         littleSection.append(img2);
 //     }
- 
+
 //     const img4 = createImageSection(data.images[0]);
 //     img4.classList.add('product-big-images');
-
 
 //     productImagesSection.append(littleSection, img4);
 //     return productImagesSection;
 // }
 
-import "./productImages.css";
+import './productImages.css';
 
 interface ProductData {
   images: string[];
 }
 
-export async function getImagesInformation(productID: number = 56): Promise<ProductData> {
+export async function getImagesInformation(
+  productID: number = 56,
+): Promise<ProductData> {
   const response = await fetch(`https://dummyjson.com/products/${productID}`);
-  if (!response.ok) throw new Error("Failed to fetch product images");
+  if (!response.ok) throw new Error('Failed to fetch product images');
   return response.json();
 }
 
-function createImageElement(imageUrl: string, className: string): HTMLImageElement {
-  const image = document.createElement("img");
+function createImageElement(
+  imageUrl: string,
+  className: string,
+): HTMLImageElement {
+  const image = document.createElement('img');
   image.src = imageUrl;
   image.classList.add(className);
   return image;
 }
 
-export async function createProductImagesSection(productID: number = 56): Promise<HTMLElement> {
-  const productImagesSection = document.createElement("section");
-  productImagesSection.classList.add("product-images-section");
+export async function createProductImagesSection(
+  productID: number = 56,
+): Promise<HTMLElement> {
+  const productImagesSection = document.createElement('div');
+  productImagesSection.classList.add('product-images-section');
 
-  const littleSection = document.createElement("section");
-  littleSection.classList.add("product-images");
+  const littleSection = document.createElement('div');
+  littleSection.classList.add('product-images');
 
   const data = await getImagesInformation(productID);
-  if (!data.images.length) throw new Error("No images found for this product");
+  if (!data.images.length) throw new Error('No images found for this product');
 
-  const mainImage = createImageElement(data.images[0], "product-image-selected");
+  const mainImage = createImageElement(
+    data.images[0],
+    'product-image-selected',
+  );
   littleSection.appendChild(mainImage);
 
-  data.images.slice(1, 3).forEach(imageUrl => {
-    littleSection.appendChild(createImageElement(imageUrl, "product-little-images"));
+  data.images.slice(1, 3).forEach((imageUrl) => {
+    littleSection.appendChild(
+      createImageElement(imageUrl, 'product-little-images'),
+    );
   });
 
-  const bigImage = createImageElement(data.images[0], "product-big-images");
+  const bigImage = createImageElement(data.images[0], 'product-big-images');
   productImagesSection.append(littleSection, bigImage);
 
   return productImagesSection;

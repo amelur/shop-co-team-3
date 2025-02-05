@@ -1,6 +1,6 @@
 import './categoryCards.css';
 import router from '../../router';
-import starImg from '../../assets/icons/star.svg';
+import starImg from '../../assets/icons/star_icon.svg';
 
 interface Product {
   id: number;

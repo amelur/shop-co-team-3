@@ -1,15 +1,5 @@
 body {
-  text-align: left; 
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: left; 
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  margin-bottom: 100px;
+  text-align: left;
 }
 
 .message-boxtitle {
@@ -18,18 +8,19 @@ body {
   font-weight: bold;
   color: #000;
   margin-bottom: 20px;
-  text-align: left; 
+  text-align: left;
 }
 
 .message-box {
-  text-align: left; 
+  text-align: left;
   border: 1px solid #ccc;
   border-radius: 15px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 50%;
+  max-width: 100%;
+  width: 715px;
   padding: 15px;
-  margin-left: 55px;
+  margin-top: 18px;
 }
 
 .message-box p {

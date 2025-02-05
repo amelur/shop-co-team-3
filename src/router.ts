@@ -1,11 +1,11 @@
 import Navigo from 'navigo';
 import { renderHomePage } from './pages/home/home';
-import { renderCategoryPage } from './pages/categoryPage/categoryPage';
-import { renderProductDetailPage } from './pages/productDetailPage/productDetail';
+import { renderCategoryPage } from './pages/CategoryPage/categoryPage';
+import { renderProductDetailPage } from './pages/ProductDetailPage/productDetail';
 import { renderCartPage } from './pages/cartPage/cart';
 import { renderCheckoutPage } from './pages/checkoutPage/checkout';
 import { renderPaymentPage } from './pages/paymentPage/payment';
-import { createConfirmationPage } from './components/orderConfirmation/confirmation';
+import { renderConfirmPage } from './pages/confirmPage/confirm';
 
 type Match = { data: Record<string, string> };
 
@@ -21,7 +21,10 @@ const showErrorMessage = (message: string): void => {
   appElement.innerHTML = `<div style="color: red; text-align: center;"><h1>Ошибка</h1><p>${message}</p></div>`;
 };
 
-const handleRoute = async (callback: () => Promise<HTMLElement> | HTMLElement, errorMessage: string): Promise<void> => {
+const handleRoute = async (
+  callback: () => Promise<HTMLElement> | HTMLElement | Promise<void>,
+  errorMessage: string,
+): Promise<void> => {
   try {
     clearApp();
     const content = await callback();
@@ -33,13 +36,31 @@ const handleRoute = async (callback: () => Promise<HTMLElement> | HTMLElement, e
 };
 
 router
-  .on('/', () => handleRoute(renderHomePage, 'Не удалось загрузить главную страницу.'))
-  .on('/category/:category', ({ data }: Match) => handleRoute(() => renderCategoryPage(data.category), 'Ошибка загрузки категории.'))
-  .on('/product/:productId', ({ data }: Match) => handleRoute(() => renderProductDetailPage(data.productId), 'Ошибка загрузки продукта.'))
+  .on('/', () =>
+    handleRoute(renderHomePage, 'Не удалось загрузить главную страницу.'),
+  )
+  .on('/category/:category', ({ data }: Match) =>
+    handleRoute(
+      () => renderCategoryPage(data.category),
+      'Ошибка загрузки категории.',
+    ),
+  )
+  .on('/product/:productId', ({ data }: Match) =>
+    handleRoute(
+      () => renderProductDetailPage(data.productId),
+      'Ошибка загрузки продукта.',
+    ),
+  )
   .on('/cart', () => handleRoute(renderCartPage, 'Ошибка загрузки корзины.'))
-  .on('/checkout', () => handleRoute(renderCheckoutPage, 'Ошибка загрузки оформления заказа.'))
-  .on('/payment', () => handleRoute(renderPaymentPage, 'Ошибка загрузки страницы оплаты.'))
-  .on('/confirm', () => handleRoute(createConfirmationPage, 'Ошибка загрузки подтверждения заказа.'))
+  .on('/checkout', () =>
+    handleRoute(renderCheckoutPage, 'Ошибка загрузки оформления заказа.'),
+  )
+  .on('/payment', () =>
+    handleRoute(renderPaymentPage, 'Ошибка загрузки страницы оплаты.'),
+  )
+  .on('/confirm', () =>
+    handleRoute(renderConfirmPage, 'Ошибка загрузки подтверждения заказа.'),
+  )
   .notFound(() => showErrorMessage('Страница не найдена.'));
 
 router.resolve();

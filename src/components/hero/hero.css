@@ -1,32 +1,3 @@
-html {
-  scroll-behavior: smooth;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-a,
-a:visited,
-a:hover,
-a:active {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-body {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
 .hero {
   position: relative;
   background-color: #f2f0f1;
@@ -107,8 +78,7 @@ body {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 32px;
+  justify-content: space-between;
   padding: 48px 0 0;
   @media (max-width: 1190px) {
     padding: 48px 0px 0;
@@ -189,13 +159,6 @@ body {
     height: 50.956px;
   }
 }
-
-/* .hero__img-wrapper {
-  width: 100%;
-  height: 663px;
-  position: relative;
-  overflow: hidden;
-} */
 
 .hero__img {
   position: relative;

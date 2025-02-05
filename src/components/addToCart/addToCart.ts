@@ -1,12 +1,9 @@
-import "./addToCart.css";
-import router from "../../router";
-import starImg from "../../assets/icons/star.svg";
-import starHalfImg from "../../assets/icons/star-half.svg";
-import minusIcon from "../../assets/icons/minus.svg";
-import plusIcon from "../../assets/icons/plus.svg";
-
-const urlCardId = new URLSearchParams(window.location.search);
-const cardId = urlCardId.get("id");
+import './addToCart.css';
+import router from '../../router';
+import starImg from '../../assets/icons/star.svg';
+import starHalfImg from '../../assets/icons/star-half.svg';
+import minusIcon from '../../assets/icons/minus.svg';
+import plusIcon from '../../assets/icons/plus.svg';
 
 interface Product {
   id: number;
@@ -21,13 +18,13 @@ interface Product {
 
 export async function fetchProduct(productId: string | null): Promise<Product> {
   const response = await fetch(`https://dummyjson.com/products/${productId}`);
-  if (!response.ok) throw new Error("Failed to fetch product data");
+  if (!response.ok) throw new Error('Failed to fetch product data');
   return response.json();
 }
 
 export async function renderProduct(product: Product): Promise<HTMLElement> {
-  const container = document.createElement("section");
-  container.classList.add("details");
+  const container = document.createElement('section');
+  container.classList.add('details');
 
   const stars = createStars(product.rating);
 
@@ -46,11 +43,15 @@ export async function renderProduct(product: Product): Promise<HTMLElement> {
       </div>
       <p class="description">${product.description}</p>
       <hr>
-      ${product.brand ? `<div class="brand">
+      ${
+        product.brand
+          ? `<div class="brand">
         <p class="style_brand">Brand</p>
         <strong>${product.brand}</strong>
       </div>
-      <hr>` : ""}
+      <hr>`
+          : ''
+      }
       <div class="stock">
         <p class="style_stock">In Stock</p>
         <strong>${product.stock} items</strong>
@@ -68,22 +69,28 @@ export async function renderProduct(product: Product): Promise<HTMLElement> {
   </section>
   `;
 
-  const addToCartButton = container.querySelector(".add-to-cart") as HTMLButtonElement;
-  addToCartButton.addEventListener("click", () => router.navigate("/cart"));
+  const addToCartButton = container.querySelector(
+    '.add-to-cart',
+  ) as HTMLButtonElement;
+  addToCartButton.addEventListener('click', () => router.navigate('/cart'));
 
   let quantity = 1;
-  const decrementButton = container.querySelector("#decrement") as HTMLButtonElement;
-  const incrementButton = container.querySelector("#increment") as HTMLButtonElement;
-  const quantityDisplay = container.querySelector("#quantity") as HTMLElement;
+  const decrementButton = container.querySelector(
+    '#decrement',
+  ) as HTMLButtonElement;
+  const incrementButton = container.querySelector(
+    '#increment',
+  ) as HTMLButtonElement;
+  const quantityDisplay = container.querySelector('#quantity') as HTMLElement;
 
-  decrementButton.addEventListener("click", () => {
+  decrementButton.addEventListener('click', () => {
     if (quantity > 1) {
       quantity--;
       quantityDisplay.textContent = quantity.toString();
     }
   });
 
-  incrementButton.addEventListener("click", () => {
+  incrementButton.addEventListener('click', () => {
     if (quantity < product.stock) {
       quantity++;
       quantityDisplay.textContent = quantity.toString();
@@ -96,7 +103,7 @@ export async function renderProduct(product: Product): Promise<HTMLElement> {
 function createStars(rating: number): string {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
-  let starsHtml = "";
+  let starsHtml = '';
 
   for (let i = 0; i < fullStars; i++) {
     starsHtml += `<img src="${starImg}" alt="Full Star">`;
