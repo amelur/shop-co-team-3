@@ -17,24 +17,17 @@ export async function renderProduct(product: any) {
   const container = document.createElement('section') as HTMLElement;
   container.classList.add('details');
 
+  // Вызываем функцию createStars для создания HTML со звездами
+  const stars = createStars(product.rating);  // Вызов createStars для генерации HTML со звездами
+
   container.innerHTML = `
   <section class="details">
-<!-- 4 контейнера для имитации картинок -->
-    <!-- <div class="imgs">  
-    <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-  </div>
-   -->
- 
     <div class="product-detail">
       <h2>${product.title}</h2>
 
       <div class="rating">
-      
-        createStars(product.rating) <!-- Генерация звёзд -->
-  <p class="rating-num">${product.rating}/5</p>
+        ${stars} <!-- Вставляем сгенерированные звезды -->
+        <p class="rating-num">${product.rating}/5</p>
       </div>
 
       <div class="price-container">
@@ -46,84 +39,92 @@ export async function renderProduct(product: any) {
         <div class="discount">-${product.discountPercentage}%</div>
       </div>
 
-      <p>${product.description}</p>
+      <p class="description">${product.description}</p>
 
       <hr>
 
       <div class="brand">
-      <p class="style_brand">Brand</p>
-      <strong>${product.brand}</strong></div>
+        <p class="style_brand">Brand</p>
+        <strong>${product.brand}</strong>
+      </div>
 
       <hr>
 
       <div class="stock">
-      <p class="style_stock">In Stock</p>
-      <strong>${product.stock} items</strong></div>
+        <p class="style_stock">In Stock</p>
+        <strong>${product.stock} items</strong>
+      </div>
 
       <hr>
 
       <div class="buttonsConteiner">
-      
-      <div class="counter">
-        <button class="minus" id="decrement">
-        <img src="${minusIcon}">
-        </button>
+        <div class="counter">
+          <button class="minus" id="decrement">
+            <img src="${minusIcon}">
+          </button>
 
-        <span class="counter-value" id="quantity">1</span>
+          <span class="counter-value" id="quantity">1</span>
 
-        <button class="plus" id="increment">
-        <img src="${plusIcon}">
-        </button>
+          <button class="plus" id="increment">
+            <img src="${plusIcon}">
+          </button>
+        </div>
+
+        <button class="add-to-cart">Add to Cart</button>
       </div>
-
-      <button class="add-to-cart">Add to Cart</button>
     </div>
-
-    </div>
-
-     </section>
+  </section>
   `;
 
-  const addToCartButton = container.querySelector(
-    '.add-to-cart',
-  ) as HTMLButtonElement;
+  // Обработчик для кнопки "Добавить в корзину"
+  const addToCartButton = container.querySelector('.add-to-cart') as HTMLButtonElement;
   addToCartButton.addEventListener('click', () => {
     router.navigate(`/cart`);
   });
-  // // Функция для создания звезд рейтинга
-  // function createStars(rating: number): string {
-  //   const fullStars = Math.floor(rating); // Число полных звезд
-  //   const hasHalfStar = rating % 1 >= 0.5;
-  //   let starsHtml = '';
 
-  //   const fullStarUrl = starImg;
-  //   const halfStarUrl = starHalfImg;
+  // Логика для изменения количества
+  let quantity = 1;
+  const decrementButton = container.querySelector('#decrement');
+  const incrementButton = container.querySelector('#increment');
+  const quantityDisplay = container.querySelector('#quantity');
 
-  //   // Добавляем полные звезды
-  //   for (let i = 0; i < fullStars; i++) {
-  //     starsHtml += `<img src="${fullStarUrl}" alt="Full Star">`;
-  //   }
+  // Обработчик для кнопки уменьшения количества
+  decrementButton?.addEventListener('click', () => {
+    if (quantity > 1) {
+      quantity--;
+      quantityDisplay!.innerText = quantity.toString();
+    }
+  });
 
-  //   // Добавляем половину звезды, если нужно
-  //   if (hasHalfStar) {
-  //     starsHtml += `<img src="${halfStarUrl}" alt="Half Star">`;
-  //   }
+  // Обработчик для кнопки увеличения количества
+  incrementButton?.addEventListener('click', () => {
+    if (quantity < product.stock) {
+      quantity++;
+      quantityDisplay!.innerText = quantity.toString();
+    }
+  });
 
-  //   return `<span class="stars">${starsHtml}</span>`;
-  // }
-
-  // let quantity = 1;
-  // document.getElementById('decrement').addEventListener('click', () => {
-  //   if (quantity > 1) {
-  //     quantity--;
-  //     document.getElementById('quantity').innerText = quantity.toString();
-  //   }
-  // });
-  // document.getElementById('increment').addEventListener('click', () => {
-  //   if (quantity < product.stock) {
-  //     quantity++;
-  //     document.getElementById('quantity').innerText = quantity.toString();
-  //   }
-  // });
   return container;
+}
+
+// Функция для создания звезд по рейтингу
+function createStars(rating: number): string {
+  const fullStars = Math.floor(rating); // Число полных звезд
+  const hasHalfStar = rating % 1 >= 0.5; // Проверяем, нужна ли половина звезды
+  let starsHtml = '';
+
+  const fullStarUrl = starImg;
+  const halfStarUrl = starHalfImg;
+
+  // Добавляем полные звезды
+  for (let i = 0; i < fullStars; i++) {
+    starsHtml += `<img src="${fullStarUrl}" alt="Full Star">`;
+  }
+
+  // Добавляем половину звезды, если нужно
+  if (hasHalfStar) {
+    starsHtml += `<img src="${halfStarUrl}" alt="Half Star">`;
+  }
+
+  return `<span class="stars">${starsHtml}</span>`;
 }
