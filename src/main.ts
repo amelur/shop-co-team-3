@@ -6,5 +6,5 @@ import './styles/base.css';
 document.addEventListener('DOMContentLoaded', () => {
   createHeader();
   router.resolve();
-  createFooter();
+  // createFooter();
 });

@@ -1,24 +1,17 @@
 import './confirmation.css';
 
 export function createConfirmationPage(): HTMLElement {
-  // Получаем контейнер для приложения
-const container = document.createElement('div');
+  const container = document.createElement('div');
+  const heading = Object.assign(document.createElement('h1'), {
+    textContent: 'Order Confirmation',
+    className: 'order-confirmation'
+  });
 
-  // Создаем заголовок
-  const heading = document.createElement("h1");
-  heading.textContent = "Order Confirmation";
-  heading.className = "order-confirmation";
+  const messageBox = Object.assign(document.createElement('div'), {
+    className: 'message-box',
+    innerHTML: `<p>Success! Your order has been confirmed. Please check your email to track delivery progress.</p>`
+  });
 
-  // Создаем контейнер для сообщения
-  const messageBox = document.createElement("div");
-  messageBox.className = "message-box";
-
-  // Добавляем текст в сообщение
-  messageBox.innerHTML = `
-    <p>Success! Your order has been confirmed. Please check out your email address to track delivery progress.</p>
-  `;
-
-  // Добавляем элементы в DOM
   container.append(heading, messageBox);
   return container;
 }

@@ -1,7 +1,7 @@
-import './input.css';
-import './checkoutForm.css';
-import { createInput } from '../../components/input/input.ts';
-import { createOrderSummarySection } from './orderSummarySection.ts';
+import "./input.css";
+import "./checkoutForm.css";
+import { createInput } from "../../components/input/input.ts";
+import { createOrderSummarySection } from "./orderSummarySection.ts";
 
 interface Product {
   id: number;
@@ -23,107 +23,49 @@ interface Cart {
   totalQuantity: number;
 }
 
-export async function getCartInformation(
-  cartID: number = 1,
-): Promise<Cart | null> {
+export async function getCartInformation(cartID: number = 1): Promise<Cart | null> {
   try {
-    const res = await fetch('https://dummyjson.com/carts/' + cartID);
-    if (!res.ok) {
-      throw new Error('Ошибка загрузки данных корзины');
-    }
-    const data = await res.json();
-    return data;
+    const res = await fetch(`https://dummyjson.com/carts/${cartID}`);
+    if (!res.ok) throw new Error("Ошибка загрузки данных корзины");
+    return await res.json();
   } catch (error) {
-    console.error('Ошибка при получении данных о корзине:', error);
+    console.error("Ошибка при получении данных о корзине:", error);
     return null;
   }
 }
 
-// ===================================================================================
-// Функция создания секции с заданным стилем
-export function createSection(style: string): HTMLElement {
-  const section = document.createElement('div');
-  section.className = style;
+function createSection(className: string): HTMLElement {
+  const section = document.createElement("div");
+  section.className = className;
   return section;
 }
 
-// Функция создания одного item, это див с текстом слева и ценой справа, каждый со своим стилем
-function createItem(
-  text: string,
-  textStyle: string,
-  price: string,
-  priceStyle: string,
-): HTMLElement {
-  const div = document.createElement('div');
-  div.style.display = 'flex';
-  div.style.justifyContent = 'space-between';
+export async function createCheckoutForm(cartID: number = 1): Promise<HTMLElement> {
+  const checkoutFormSection = document.createElement("form");
+  checkoutFormSection.classList.add("createCheckoutFormSection");
 
-  const staticText = document.createElement('p');
-  staticText.textContent = text;
-  staticText.className = textStyle;
+  const formSection = createSection("formSection");
+  const fieldsSection = createSection("fieldsSection checkout");
 
-  const priceText = document.createElement('p');
-  priceText.textContent = price;
-  priceText.className = priceStyle;
+  const inputs = [
+    createInput("First name"),
+    createInput("Last name"),
+    createInput("Maiden name"),
+    createSection("separator"),
+    createInput("Email", "", "email"),
+    createInput("Phone", "", "number"),
+    createSection("separator"),
+    createInput("Address"),
+    createInput("City"),
+    createInput("Postal code"),
+  ];
 
-  div.append(staticText, priceText);
-  return div;
-}
-
-//---------------- Основная функция создания формы Checkout -------------------------------------//
-export async function createCheckoutForm(
-  cartID: number = 1,
-): Promise<HTMLElement> {
-  // Вся секция, будет содержать название и форму, вертикальное расположение
-  const checkoutFormSection = document.createElement('form');
-  checkoutFormSection.classList.add('createCheckoutFormSection');
-
-  // Секция с полями и саммари
-  const formSection = createSection('formSection');
-  // Секция с полями
-  const fieldsSection = createSection('fieldsSection checkout');
-  // Секция с саммари
-  //let orderSummarySection = createSection('orderSummarySection');
-
-  // Поля для ввода данных
-  const inpFirstName = createInput('First name');
-  const inpLastName = createInput('Last name');
-  const inpMaidenName = createInput('Maiden name');
-  const separator1 = createSection('separator');
-  const inpEmail = createInput('Email', '', 'email');
-  const inpPhone = createInput('Phone', '', 'number');
-  const separator2 = createSection('separator');
-  const inpAddress = createInput('Address');
-  const inpCity = createInput('City');
-  const inpPostalCode = createInput('Postal code');
-
-  // Добавляем поля для ввода данных в секцию
-  fieldsSection.append(
-    inpFirstName,
-    inpLastName,
-    inpMaidenName,
-    separator1,
-    inpEmail,
-    inpPhone,
-    separator2,
-    inpAddress,
-    inpCity,
-    inpPostalCode,
-  );
-
-  // ------- Формируем саммари секцию -------  -------  -------
-  // Название секции саммари
-  const summaryTitle = document.createElement('h2');
-  summaryTitle.textContent = 'Order Summary';
+  fieldsSection.append(...inputs);
 
   const data = await getCartInformation(cartID);
-
   const orderSummarySection = createOrderSummarySection(data);
 
-  // Объединяем секцию с полями и с саммари
   formSection.append(fieldsSection, orderSummarySection);
-
-  // Собираем всю секцию: Название и форма
   checkoutFormSection.append(formSection);
 
   return checkoutFormSection;
