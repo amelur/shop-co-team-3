@@ -1,6 +1,7 @@
 import './footer.css';
 import'../../base.css';
-import { renderForm } from './form';
+import { renderForm
+ } from './form';
 
 export function createFooter() {
   const footer = document.createElement('footer');
@@ -111,4 +112,4 @@ export function createFooter() {
 
   
   document.body.append(footer);
-}
+};

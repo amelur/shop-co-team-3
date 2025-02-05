@@ -74,6 +74,52 @@
   color: #000;
 }
 
+
+.toast {
+  position: fixed;
+  bottom: 50px;
+  left: 30%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 18px 28px;
+  border-radius: 10px;
+  font-size: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  animation: blink 1s ease forwards; 
+}
+
+@keyframes blink {
+  0% {
+    background-color: #787878; 
+  }
+  50% {
+    background-color: #e0ddddc7; 
+    color: #333; 
+  }
+  100% {
+    background-color: #787878;
+    color: white; 
+  }
+}
+
+.toast.error {
+  background-color: #d74944;
+}
+
+.toast.success {
+  background-color: #787878;
+}
+
 /* Адаптивный дизайн */
 @media (max-width: 1024px) {
   .newsletter {

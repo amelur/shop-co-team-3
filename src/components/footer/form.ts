@@ -22,3 +22,39 @@ export function renderForm() {
 `;
   return newsletterForm;
 }
+
+function showToast(message: string, type: 'success' | 'error') {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.className = `toast show ${type}`;
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3000);
+}
+
+export function setupNewsletterForm(): void {
+  const form = document.querySelector('.newsletter-form') as HTMLFormElement;
+  const input = form?.querySelector('.newsletter-input') as HTMLInputElement;
+
+  if (!form || !input) return;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+
+    const email = input.value.trim();
+
+    if (!email.includes('@')) {
+      showToast('❌ Enter a valid email', 'error');
+      return;
+    }
+
+    
+    setTimeout(() => {
+      showToast('✅ Success! You\'ve subscribed to our newsletter.', 'success');
+      form.reset();
+    }, 1000);
+  });
+}
