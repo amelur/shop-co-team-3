@@ -34,11 +34,12 @@
 
 /* Изображение товара */
 .cart-item-image {
-  width: 124px;
-  height: 124px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-right: 20px;
+    width: 124px;
+    height: 124px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
+    background-color: #e0e0e0;
 }
 
 /* Информация о товаре */
@@ -62,10 +63,15 @@
 
 /* Скидка на товар */
 .cart-item-discount {
-  background-color: #ffeaea;
-  color: #ff4d4d;
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 14px;
-  margin-left: 10px;
+    background-color: #ffeaea;
+    color: #ff4d4d;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    margin-left: 10px;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
