@@ -1,19 +1,15 @@
-import './checkout.css';
-import { createCheckoutForm } from '../../components/checkout/checkoutForm';
-import { createAppTitle } from '../../utils/DevHelper';
-import '../../components/checkout/checkout.css';
+import "./checkout.css";
+import { createCheckoutForm } from "../../components/checkout/checkoutForm";
+import { createAppTitle } from "../../utils/DevHelper";
+import "../../components/checkout/checkout.css";
 
 export async function renderCheckoutPage(): Promise<HTMLElement> {
-  const page = document.createElement('div') as HTMLElement;
-  page.className = 'checkoutPage';
+  const page = document.createElement("div");
+  page.className = "checkoutPage";
 
-  const title = createAppTitle('Checkout');
+  const title = createAppTitle("Checkout");
+  const checkoutForm = await createCheckoutForm(5);
 
-  const checkout = await createCheckoutForm(5);
-
-  page.append(title, checkout);
+  page.append(title, checkoutForm);
   return page;
 }
-
-// const checkOut = await createCheckoutForm(5);
-// document.body.append(checkOut);
