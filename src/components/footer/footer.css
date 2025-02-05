@@ -21,7 +21,7 @@ footer {
 
 .footer__info-block {
   display: flex;
-  width: 1220px;
+  width: 100%;
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 30px;
