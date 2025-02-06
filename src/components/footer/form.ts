@@ -23,9 +23,21 @@ export function renderForm() {
   return newsletterForm;
 }
 
+function createToastContainer() {
+  let toast = document.getElementById('toast');
+
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'toast hidden';
+    document.body.appendChild(toast);
+  }
+
+  return toast;
+}
+
 function showToast(message: string, type: 'success' | 'error') {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
+  const toast = createToastContainer(); 
 
   toast.textContent = message;
   toast.className = `toast show ${type}`;
