@@ -1,21 +1,22 @@
 .productPage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 100px 91px;
-    gap: 40px;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 91px;
 }
 
 @media screen and (min-width: 600px) {
   .productPage {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        /* flex-wrap: wrap; */
-        align-items: center;
-        margin: 40px 100px 91px;
-        gap: 40px;
-    }
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    padding: 40px 100px 91px;
+
+    gap: 40px;
+  }
 }

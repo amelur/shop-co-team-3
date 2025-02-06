@@ -3,7 +3,7 @@ import '/src/styles/base.css';
 
 export function renderForm() {
   const newsletterForm = `
-<section class="newsletter">
+<div class="newsletter">
   <div class="newsletter-title">
     <h3>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h3>
   </div>
@@ -18,7 +18,7 @@ export function renderForm() {
     </div>
     <button type="submit" class="newsletter-button">Subscribe to Newsletter</button>
   </form>
-</section>
+</div>
 `;
   return newsletterForm;
 }
@@ -42,7 +42,7 @@ export function setupNewsletterForm(): void {
   if (!form || !input) return;
 
   form.addEventListener('submit', (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const email = input.value.trim();
 
@@ -51,9 +51,8 @@ export function setupNewsletterForm(): void {
       return;
     }
 
-    
     setTimeout(() => {
-      showToast('✅ Success! You\'ve subscribed to our newsletter.', 'success');
+      showToast("✅ Success! You've subscribed to our newsletter.", 'success');
       form.reset();
     }, 1000);
   });

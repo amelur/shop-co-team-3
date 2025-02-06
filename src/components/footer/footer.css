@@ -4,41 +4,51 @@ html {
 
 footer {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   font-family: Rubik;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   width: 100%;
-  /* height: 499px; */
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  padding: 0 100px;
+
+  margin-top: 91px;
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
 }
 
 .footer__wrapper {
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 20px; 
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 53px;
 }
 
 .footer__info-block {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   padding-bottom: 30px;
 }
 
 .footer__blocks-CHFR {
+  max-width: 100%;
+  width: 780px;
   display: flex;
   flex-wrap: wrap;
-  gap: 120px;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .footer__title {
   display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 35px;
-  
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 35px;
 }
 
 .footer__images-container {
@@ -99,13 +109,13 @@ h4 {
 }
 
 .footer__copyright {
-  color: rgba(0, 0, 0, 0.60);
-text-align: right;
-font-family: Rubik;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: right;
+  font-family: Rubik;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .footer__credit-cards {
@@ -113,7 +123,6 @@ line-height: normal;
   align-items: flex-end;
   gap: 12px;
 }
- 
 
 @media (max-width: 768px) {
   .footer__wrapper {
@@ -127,7 +136,7 @@ line-height: normal;
   .footer__blocks-CHFR {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Центрируем контент */
+    justify-content: center;
     gap: 20px;
     width: 100%;
   }
@@ -135,10 +144,9 @@ line-height: normal;
   .footer__info-block {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Две колонки */
+    justify-content: space-between;
     gap: 20px;
     width: 100%;
-    max-width: 600px; /* Ограничиваем ширину, чтобы блоки не растягивались */
   }
 
   .footer__blocks-CHFR > div {
@@ -197,10 +205,10 @@ line-height: normal;
   .footer__info-block {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
   }
-  
+
   .footer__blocks-CHFR {
     padding: 10px;
   }
@@ -233,6 +241,4 @@ line-height: normal;
     flex: 1 1 calc(50% - 10px); /* Всё ещё две колонки */
     min-width: 120px; /* Минимальная ширина */
   }
-
-  
 }

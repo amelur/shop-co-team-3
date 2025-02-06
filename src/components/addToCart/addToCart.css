@@ -1,7 +1,13 @@
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
 .product-detail {
-  margin-left: auto;
-  /* padding: 16px; */
-  max-width: 580px;
+  max-width: 100%;
+  width: 450px;
   font-family: Poppins;
 }
 
@@ -47,8 +53,7 @@ p {
   display: block; /* Убирает лишние пробелы вокруг изображений */
 }
 
-
-/* цена */
+/* Цена */
 .price-container {
   display: flex;
   gap: 15px;
@@ -74,28 +79,28 @@ p {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  color: #F33;
+  color: #f33;
   font-family: Rubik;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
   border-radius: 62px;
-background: rgba(255, 51, 51, 0.10);
+  background: rgba(255, 51, 51, 0.1);
 }
 
-/* бренд и склад */
-.brand, .stock {
+/* Бренд и склад */
+.brand,
+.stock {
   font-size: 24px;
   padding: 7px;
 }
 
-.style_brand, .style_stock {
+.style_brand,
+.style_stock {
   font-size: 16px;
   padding: 7px;
 }
 
-/* счётчик */
+/* Счётчик */
 .counter {
   display: flex;
   align-items: center;
@@ -105,17 +110,19 @@ background: rgba(255, 51, 51, 0.10);
   height: 52px;
   gap: 15px;
   margin: 16px 0;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
 }
 
-.minus, .plus {
-  background: none; 
-  border: none; 
+.minus,
+.plus {
+  background: none;
+  border: none;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.plus:hover, .minus:hover {
+.plus:hover,
+.minus:hover {
   transform: scale(1.2);
 }
 
@@ -124,7 +131,7 @@ background: rgba(255, 51, 51, 0.10);
   text-align: center;
 }
 
-/* кнопка добавления в корзину */
+/* Кнопка добавления в корзину */
 .add-to-cart {
   display: flex;
   padding: 16px 139px;
@@ -138,7 +145,6 @@ background: rgba(255, 51, 51, 0.10);
   color: #fff;
   font-family: Rubik;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
@@ -147,7 +153,7 @@ background: rgba(255, 51, 51, 0.10);
 }
 
 .add-to-cart:hover {
-  background: #F2F0F1;
+  background: #f2f0f1;
   color: #000;
 }
 
@@ -158,51 +164,31 @@ background: rgba(255, 51, 51, 0.10);
   flex-direction: row;
 }
 
-/* 4 контейнера для имитации картинок */
-
-/* .details {
-  display: flex;
-  justify-content: space-between; 
-  align-items: flex-start;
-  flex-wrap: nowrap; 
-  width: 100%;
-}
-
-.details > div {
-  flex: 1; 
-  max-width: 48%; 
-}
-
-
 .imgs {
-  display: grid; 
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  width: 40%; 
-  padding: 10px; 
+  width: 40%;
+  padding: 10px;
   height: 600px;
 }
 
 .imgs > div {
   height: 250px;
   background-color: rgb(85, 80, 80);
-  border-radius: 20px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-  transition: transform 0.3s ease-in-out; 
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
 }
 
 .imgs > div:hover {
   transform: translateY(-5px);
 }
 
- */
-
-
 /* Адаптивность */
-@media (max-width: 1024px) {
+@media (max-width: 800px) {
   .product-detail {
     padding: 12px;
-    max-width: 500px;
   }
 
   h2 {
@@ -213,7 +199,8 @@ background: rgba(255, 51, 51, 0.10);
     font-size: 28px;
   }
 
-  .old-price, .discount {
+  .old-price,
+  .discount {
     font-size: 24px;
   }
 
@@ -237,7 +224,8 @@ background: rgba(255, 51, 51, 0.10);
     font-size: 24px;
   }
 
-  .old-price, .discount {
+  .old-price,
+  .discount {
     font-size: 20px;
   }
 
@@ -260,18 +248,6 @@ background: rgba(255, 51, 51, 0.10);
     justify-content: center; /* Центруем кнопки */
     gap: 42px;
   }
-
-
-  /* .details {
-    flex-direction: column;
-  }
-  .imgs {
-    grid-template-columns: repeat(2, 1fr); 
-  }
-
-  .imgs > div {
-    height: 120px; 
-  } */
 }
 
 @media (max-width: 480px) {
@@ -293,10 +269,11 @@ background: rgba(255, 51, 51, 0.10);
     padding: 10px 60px;
     font-size: 12px;
   }
+
   .buttonsConteiner {
     flex-direction: row; /* Оставляем кнопки в строку */
     flex-wrap: wrap; /* Позволяем кнопкам сжиматься, если не хватает места */
     justify-content: center; /* Центруем кнопки */
-    gap: 28px; 
+    gap: 28px;
   }
 }
